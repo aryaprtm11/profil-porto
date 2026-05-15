@@ -1,4 +1,3 @@
-import Image from "next/image";
 import localFont from "next/font/local";
 import type { IconType } from "react-icons";
 import { FaAws } from "react-icons/fa";
@@ -18,6 +17,7 @@ import {
   SiTypescript,
   SiVuedotjs,
 } from "react-icons/si";
+import Lanyard from "./components/Lanyard";
 
 const varien = localFont({
   src: "../public/fonts/varien/Varien.otf",
@@ -280,7 +280,7 @@ export default function Home() {
           id="about"
           className="grid min-h-[calc(100vh-88px)] scroll-mt-32 items-center gap-12 py-24 lg:grid-cols-[1.1fr_0.9fr]"
         >
-          <div className="max-w-3xl" data-scroll-reveal>
+          <div className="order-2 max-w-3xl lg:order-1" data-scroll-reveal>
             <h1 className={`${varien.className} text-5xl font-normal leading-[1.05] tracking-normal sm:text-7xl`}>
               About Arya Pratama
             </h1>
@@ -293,20 +293,18 @@ export default function Home() {
             </p>
           </div>
           <div
-            className="cursor-target relative mx-auto w-full max-w-sm lg:mr-0"
+            className="relative order-1 mx-auto -mb-24 -mt-28 h-[520px] w-full max-w-sm overflow-visible sm:h-[600px] lg:order-2 lg:mr-0 lg:-mb-0 lg:-mt-36 lg:h-[760px] lg:max-w-lg"
             data-scroll-reveal
             style={{ "--reveal-delay": "140ms" } as React.CSSProperties}
           >
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[32px] border border-black/10 bg-white shadow-[0_24px_60px_rgba(0,0,0,0.12)]">
-              <Image
-                src="/profile/114677961.jpg"
-                alt="Foto Arya Pratama"
-                fill
-                priority
-                sizes="(max-width: 1024px) 80vw, 360px"
-                className="object-cover"
-              />
-            </div>
+            <Lanyard
+              anchorPosition={[0, 8, 0]}
+              cardScale={2.45}
+              className="h-full"
+              position={[0, 0, 17]}
+              fov={15}
+              ropeLength={2.25}
+            />
           </div>
         </section>
 

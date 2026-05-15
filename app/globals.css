@@ -25,6 +25,21 @@ body {
   font-family: var(--font-geist-mono), monospace;
 }
 
+.lanyard-wrapper {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  width: 100%;
+  min-height: 420px;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center;
+}
+
+.lanyard-wrapper canvas {
+  display: block;
+}
+
 .target-cursor-enabled,
 .target-cursor-enabled * {
   cursor: none !important;
