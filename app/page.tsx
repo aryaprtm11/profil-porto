@@ -293,7 +293,7 @@ export default function Home() {
             </p>
           </div>
           <div
-            className="relative mx-auto w-full max-w-sm lg:mr-0"
+            className="cursor-target relative mx-auto w-full max-w-sm lg:mr-0"
             data-scroll-reveal
             style={{ "--reveal-delay": "140ms" } as React.CSSProperties}
           >
@@ -324,7 +324,7 @@ export default function Home() {
             {skills.map((group, index) => (
               <article
                 key={group.title}
-                className="rounded-[28px] border border-black/10 bg-white/85 p-7 backdrop-blur"
+                className="cursor-target rounded-[28px] border border-black/10 bg-white/85 p-7 backdrop-blur"
                 data-scroll-reveal
                 style={
                   { "--reveal-delay": `${index * 90}ms` } as React.CSSProperties
@@ -358,7 +358,7 @@ export default function Home() {
             {projects.map((project, index) => (
               <article
                 key={project.title}
-                className="flex min-h-80 flex-col justify-between rounded-[28px] border border-black/10 bg-white/85 p-7 backdrop-blur"
+                className="cursor-target flex min-h-80 flex-col justify-between rounded-[28px] border border-black/10 bg-white/85 p-7 backdrop-blur"
                 data-scroll-reveal
                 style={
                   { "--reveal-delay": `${index * 90}ms` } as React.CSSProperties
@@ -395,7 +395,7 @@ export default function Home() {
               Learning records that support the work.
             </h2>
             <div
-              className="divide-y divide-black/10 rounded-[28px] border border-black/10 bg-white/85 backdrop-blur"
+              className="cursor-target divide-y divide-black/10 rounded-[28px] border border-black/10 bg-white/85 backdrop-blur"
               data-scroll-reveal
               style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
             >
@@ -430,7 +430,7 @@ export default function Home() {
             {experiences.map((experience, index) => (
               <article
                 key={experience.role}
-                className="grid gap-5 rounded-[28px] border border-black/10 bg-white/85 p-7 backdrop-blur md:grid-cols-[0.8fr_1.2fr]"
+                className="cursor-target grid gap-5 rounded-[28px] border border-black/10 bg-white/85 p-7 backdrop-blur md:grid-cols-[0.8fr_1.2fr]"
                 data-scroll-reveal
                 style={
                   { "--reveal-delay": `${index * 100}ms` } as React.CSSProperties
@@ -454,7 +454,7 @@ export default function Home() {
 
         <section id="contact" className="scroll-mt-32 py-24">
           <div
-            className="rounded-[32px] border border-black/10 bg-[#111111] p-8 text-white md:p-10"
+            className="cursor-target rounded-[32px] border border-black/10 bg-[#111111] p-8 text-white md:p-10"
             data-scroll-reveal
           >
             <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">

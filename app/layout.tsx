@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import SmoothScroll from "./components/SmoothScroll";
+import TargetCursor from "./components/TargetCursor";
 import "lenis/dist/lenis.css";
 import "./globals.css";
 
@@ -36,6 +37,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <SmoothScroll />
+        <TargetCursor />
         {children}
       </body>
     </html>
