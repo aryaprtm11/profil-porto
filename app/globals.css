@@ -40,6 +40,43 @@ body {
   display: block;
 }
 
+.project-grid:has(.project-card:hover) .project-card:not(:hover),
+.project-grid:has(.project-card:focus-within) .project-card:not(:focus-within) {
+  filter: grayscale(1) blur(6px);
+  opacity: 0.55;
+  transform: scale(0.985);
+}
+
+.project-grid .project-card:hover,
+.project-grid .project-card:focus-within {
+  filter: grayscale(0) blur(0);
+  opacity: 1;
+  position: relative;
+  z-index: 20;
+  transform: translate3d(0, -14px, 0);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.16);
+}
+
+@media (max-width: 767px) {
+  .project-grid .project-card:first-child {
+    border-radius: 18px 18px 0 0;
+  }
+
+  .project-grid .project-card:last-child {
+    border-radius: 0 0 18px 18px;
+  }
+}
+
+@media (min-width: 768px) {
+  .project-grid .project-card:first-child {
+    border-radius: 18px 0 0 18px;
+  }
+
+  .project-grid .project-card:last-child {
+    border-radius: 0 18px 18px 0;
+  }
+}
+
 .target-cursor-enabled,
 .target-cursor-enabled * {
   cursor: none !important;

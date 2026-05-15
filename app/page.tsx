@@ -14,7 +14,9 @@ import {
   SiPhp,
   SiPostgresql,
   SiReact,
+  SiTailwindcss,
   SiTypescript,
+  SiVercel,
   SiVuedotjs,
 } from "react-icons/si";
 import Lanyard from "./components/Lanyard";
@@ -27,6 +29,7 @@ const varien = localFont({
 type SkillIcon =
   | "react"
   | "next"
+  | "tailwind"
   | "typescript"
   | "vue"
   | "node"
@@ -38,6 +41,7 @@ type SkillIcon =
   | "mongodb"
   | "git"
   | "figma"
+  | "vercel"
   | "aws"
   | "gcp";
 
@@ -50,6 +54,7 @@ const skillIcons: Record<
 > = {
   react: { Icon: SiReact, className: "text-[#61DAFB]" },
   next: { Icon: SiNextdotjs, className: "text-black" },
+  tailwind: { Icon: SiTailwindcss, className: "text-[#06B6D4]" },
   typescript: { Icon: SiTypescript, className: "text-[#3178C6]" },
   vue: { Icon: SiVuedotjs, className: "text-[#4FC08D]" },
   node: { Icon: SiNodedotjs, className: "text-[#5FA04E]" },
@@ -61,6 +66,7 @@ const skillIcons: Record<
   mongodb: { Icon: SiMongodb, className: "text-[#47A248]" },
   git: { Icon: SiGit, className: "text-[#F05032]" },
   figma: { Icon: SiFigma, className: "text-[#F24E1E]" },
+  vercel: { Icon: SiVercel, className: "text-black" },
   aws: { Icon: FaAws, className: "text-[#FF9900]" },
   gcp: { Icon: SiGooglecloud, className: "text-[#4285F4]" },
 };
@@ -69,6 +75,92 @@ function SkillIconMark({ icon }: { icon: SkillIcon }) {
   const { Icon, className } = skillIcons[icon];
 
   return <Icon aria-hidden="true" className={`h-4 w-4 shrink-0 ${className}`} />;
+}
+
+function TechPill({ icon, label }: { icon: SkillIcon; label: string }) {
+  const { Icon, className } = skillIcons[icon];
+  const needsLightBadge = className.includes("text-black");
+
+  return (
+    <span className="inline-flex h-8 items-center gap-2 rounded-full bg-black px-4 text-xs font-bold text-white">
+      <span
+        className={
+          needsLightBadge
+            ? "grid h-4 w-4 place-items-center rounded-full bg-white"
+            : "grid h-4 w-4 place-items-center"
+        }
+      >
+        <Icon aria-hidden="true" className={`h-3.5 w-3.5 ${className}`} />
+      </span>
+      {label}
+    </span>
+  );
+}
+
+function ProjectPreview({ variant }: { variant: "portfolio" | "dashboard" | "landing" }) {
+  if (variant === "dashboard") {
+    return (
+      <div className="relative h-56 overflow-hidden bg-[#eef0ff]">
+        <div className="absolute -right-8 top-7 h-44 w-72 -rotate-[18deg] rounded-2xl border border-black/10 bg-white p-4 shadow-[0_18px_40px_rgba(0,0,0,0.12)]">
+          <div className="mb-4 h-6 w-28 rounded-full bg-black" />
+          <div className="grid grid-cols-3 gap-2">
+            <div className="h-16 rounded-xl bg-[#6B3F69]/20" />
+            <div className="h-16 rounded-xl bg-black/10" />
+            <div className="h-16 rounded-xl bg-[#ff5a1f]/20" />
+          </div>
+          <div className="mt-4 space-y-2">
+            <div className="h-2 rounded-full bg-black/15" />
+            <div className="h-2 w-4/5 rounded-full bg-black/10" />
+            <div className="h-2 w-2/3 rounded-full bg-black/10" />
+          </div>
+        </div>
+        <div className="absolute left-7 top-12 h-36 w-52 -rotate-[18deg] rounded-2xl border border-black/10 bg-white shadow-[0_18px_40px_rgba(0,0,0,0.1)]">
+          <div className="h-full rounded-2xl bg-[linear-gradient(135deg,#ffffff_0%,#ece8ff_100%)] p-4">
+            <div className="h-5 w-20 rounded-full bg-[#6B3F69]" />
+            <div className="mt-7 h-14 rounded-xl bg-black/10" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (variant === "landing") {
+    return (
+      <div className="relative h-56 overflow-hidden bg-[#edf2f7]">
+        <div className="absolute left-6 top-4 grid w-[330px] -rotate-[22deg] grid-cols-3 gap-3">
+          {Array.from({ length: 9 }).map((_, index) => (
+            <div
+              key={index}
+              className="h-28 rounded-[22px] border border-black/10 bg-white p-3 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+            >
+              <div className="mb-3 h-8 w-8 rounded-full bg-[#ff5a1f]/20" />
+              <div className="h-2 rounded-full bg-black/20" />
+              <div className="mt-2 h-2 w-2/3 rounded-full bg-black/10" />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative h-56 overflow-hidden bg-[#e8edf2]">
+      <div className="absolute -left-5 top-7 h-40 w-64 -rotate-[10deg] rounded-2xl bg-[#ff7a30] shadow-[0_18px_40px_rgba(0,0,0,0.12)]">
+        <div className="absolute left-8 top-8 grid h-16 w-16 place-items-center rounded-full bg-white text-sm font-black text-[#ff5a1f]">
+          AP
+        </div>
+      </div>
+      <div className="absolute right-8 top-9 h-40 w-72 rotate-[8deg] rounded-2xl border border-black/10 bg-white p-5 shadow-[0_18px_42px_rgba(0,0,0,0.12)]">
+        <div className="mb-5 h-5 w-36 rounded-full bg-black" />
+        <div className="space-y-2">
+          <div className="h-2 rounded-full bg-black/15" />
+          <div className="h-2 w-5/6 rounded-full bg-black/10" />
+          <div className="h-2 w-2/3 rounded-full bg-black/10" />
+        </div>
+        <div className="mt-7 h-9 rounded-full bg-[#ff5a1f]" />
+      </div>
+    </div>
+  );
 }
 
 export default function Home() {
@@ -124,23 +216,47 @@ export default function Home() {
   const projects = [
     {
       title: "Personal Portfolio",
+      subtitle: "Modern-minimalism portfolio website",
       description:
         "A clean profile website designed to present identity, skills, work, and contact flow in one focused page.",
-      tags: ["Next.js", "Tailwind", "UI Design"],
+      visual: "portfolio",
+      tags: [
+        { label: "Next JS", icon: "next" },
+        { label: "Tailwind", icon: "tailwind" },
+        { label: "Vercel", icon: "vercel" },
+      ],
     },
     {
       title: "Dashboard Interface",
+      subtitle: "Admin dashboard concept",
       description:
         "A structured admin dashboard concept with readable data cards, tables, and quick action patterns.",
-      tags: ["React", "TypeScript", "Dashboard"],
+      visual: "dashboard",
+      tags: [
+        { label: "React", icon: "react" },
+        { label: "Typescript", icon: "typescript" },
+        { label: "PostgreSQL", icon: "postgresql" },
+      ],
     },
     {
       title: "Landing Page System",
+      subtitle: "Responsive landing page system",
       description:
         "A conversion-focused landing page layout with clear hierarchy, CTA placement, and responsive sections.",
-      tags: ["Web Design", "Responsive", "Frontend"],
+      visual: "landing",
+      tags: [
+        { label: "Next JS", icon: "next" },
+        { label: "Figma", icon: "figma" },
+        { label: "Tailwind", icon: "tailwind" },
+      ],
     },
-  ];
+  ] satisfies {
+    title: string;
+    subtitle: string;
+    description: string;
+    visual: "portfolio" | "dashboard" | "landing";
+    tags: { label: string; icon: SkillIcon }[];
+  }[];
 
   const certificates = [
     "Frontend Development Fundamentals",
@@ -348,35 +464,45 @@ export default function Home() {
 
         <section id="projects" className="scroll-mt-32 py-24">
           <div className="mb-10 max-w-3xl" data-scroll-reveal>
-            <h2 className="text-4xl font-bold leading-tight tracking-[-0.01em] sm:text-5xl">
-              Selected work with clean structure and purpose.
+            <h2 className={`${varien.className} text-5xl font-normal leading-[1.05] tracking-normal sm:text-7xl`}>
+              Project
             </h2>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-black/60">
+              Beberapa project yang saya kerjakan untuk melatih kemampuan
+              membangun tampilan website yang rapi, responsif, dan sesuai
+              kebutuhan pengguna.
+            </p>
           </div>
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="project-grid grid overflow-visible rounded-[18px] border border-black/10 bg-white/75 md:grid-cols-3">
             {projects.map((project, index) => (
               <article
                 key={project.title}
-                className="cursor-target flex min-h-80 flex-col justify-between rounded-[28px] border border-black/10 bg-white/85 p-7 backdrop-blur"
+                className="project-card cursor-target flex min-h-[520px] flex-col overflow-hidden border-b border-black/10 bg-white/0 transition-[filter,opacity,transform,box-shadow] duration-500 ease-out last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0"
                 data-scroll-reveal
                 style={
                   { "--reveal-delay": `${index * 90}ms` } as React.CSSProperties
                 }
               >
+                <ProjectPreview variant={project.visual} />
                 <div>
-                  <div className="mb-8 h-28 rounded-2xl border border-black/10 bg-[linear-gradient(135deg,#ffffff_0%,#f8f5f8_48%,#ebe2eb_100%)]" />
-                  <h3 className="mb-3 text-2xl font-bold">{project.title}</h3>
-                  <p className="leading-7 text-black/60">
+                  <div className="flex flex-col gap-3 p-6 md:p-7">
+                    <p className="font-mono text-base font-bold text-black/35">
+                      {String(index + 1).padStart(2, "0")}
+                    </p>
+                    <h3 className="text-lg font-bold leading-7 text-black">
+                      {project.title}
+                    </h3>
+                    <p className="leading-7 text-black/60">
+                      {project.subtitle}
+                    </p>
+                    <p className="leading-7 text-black/55">
                     {project.description}
                   </p>
+                  </div>
                 </div>
-                <div className="mt-7 flex flex-wrap gap-2">
+                <div className="mt-auto flex flex-wrap gap-2 px-6 pb-7 md:px-7">
                   {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full bg-black px-3 py-1.5 text-xs font-semibold text-white"
-                    >
-                      {tag}
-                    </span>
+                    <TechPill key={tag.label} icon={tag.icon} label={tag.label} />
                   ))}
                 </div>
               </article>
