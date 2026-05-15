@@ -6,6 +6,7 @@ import type { IconType } from "react-icons";
 import { FiArrowLeft, FiExternalLink } from "react-icons/fi";
 import {
   getProjectDetail,
+  navItems,
   projectDetails,
   type DetailTagIcon,
   type ProjectDetail,
@@ -246,43 +247,36 @@ export default async function ProjectDetailPage({
       <header className="fixed inset-x-0 top-4 z-50 px-4 sm:top-5">
         <nav
           aria-label="Project navigation"
-          className="mx-auto flex max-w-5xl items-center justify-between gap-3 rounded-full border border-black/10 bg-[#fbfbfa]/85 px-2.5 py-2 font-mono shadow-[0_18px_48px_rgba(0,0,0,0.08)] backdrop-blur-xl md:px-3"
+          className="mx-auto flex w-fit items-center gap-3 rounded-full border border-black/10 bg-[#fbfbfa]/90 p-2 font-sans shadow-[0_14px_36px_rgba(0,0,0,0.08)] backdrop-blur-xl md:gap-5"
         >
           <Link
             href="/"
             aria-label="Back to home"
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-black text-sm font-bold text-white"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-xl font-bold text-[#111111]"
           >
             <span
               className="translate-y-px"
               style={{ fontFamily: '"MOONIC SERIF", "Times New Roman", serif' }}
             >
-              A
+              V
             </span>
           </Link>
-          <div className="hidden items-center gap-1 rounded-full bg-white/65 p-1 text-sm font-semibold text-[#111111] md:flex">
-            <Link
-              href="/#projects"
-              className="rounded-full bg-black px-4 py-2.5 text-white"
-            >
-              Project
-            </Link>
-            <Link
-              href="/#experience"
-              className="rounded-full px-4 py-2.5 transition-colors hover:bg-black hover:text-white"
-            >
-              Experience
-            </Link>
-            <Link
-              href="/#certificate"
-              className="rounded-full px-4 py-2.5 transition-colors hover:bg-black hover:text-white"
-            >
-              Certificate
-            </Link>
+          <span aria-hidden="true" className="hidden h-6 w-px bg-black/10 md:block" />
+          <div className="hidden items-center gap-5 text-sm font-medium text-[#172033] lg:gap-7 lg:text-base md:flex">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={`/${item.href}`}
+                className="transition-colors hover:text-[#ff5a1f]"
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
+          <span aria-hidden="true" className="hidden h-6 w-px bg-black/10 md:block" />
           <Link
             href="/#contact"
-            className="inline-flex h-11 items-center justify-center rounded-full bg-black px-5 text-sm font-bold text-white shadow-[0_10px_24px_rgba(0,0,0,0.16)] transition-transform hover:scale-[1.02]"
+            className="inline-flex h-12 items-center justify-center rounded-[18px] bg-[#020713] px-6 text-base font-bold text-white shadow-[0_8px_18px_rgba(0,0,0,0.22)] transition-transform hover:scale-[1.02]"
           >
             Contact Me
           </Link>

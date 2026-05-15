@@ -160,37 +160,41 @@ export default function Home() {
       <header className="fixed inset-x-0 top-4 z-50 px-4 sm:top-5">
         <nav
           aria-label="Primary navigation"
-          className="mx-auto flex max-w-5xl items-center justify-between gap-3 rounded-full border border-black/10 bg-[#fbfbfa]/85 px-2.5 py-2 font-mono shadow-[0_18px_48px_rgba(0,0,0,0.08)] backdrop-blur-xl md:px-3"
+          className="mx-auto flex w-fit items-center gap-3 rounded-full border border-black/10 bg-[#fbfbfa]/90 p-2 font-sans shadow-[0_14px_36px_rgba(0,0,0,0.08)] backdrop-blur-xl md:gap-5"
         >
           <a
             href="#"
             aria-label="Back to top"
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-black text-sm font-bold text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.18)] transition-transform hover:scale-[1.03]"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-xl font-bold text-[#111111] transition-transform hover:scale-[1.03]"
           >
             <span
               className="translate-y-px"
               style={{ fontFamily: '"MOONIC SERIF", "Times New Roman", serif' }}
             >
-              A
+              V
             </span>
           </a>
 
-          <div className="hidden items-center gap-1 rounded-full bg-white/65 p-1 text-sm font-semibold text-[#111111] md:flex">
+          <span aria-hidden="true" className="hidden h-6 w-px bg-black/10 md:block" />
+
+          <div className="hidden items-center gap-5 text-sm font-medium text-[#172033] lg:gap-7 lg:text-base md:flex">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="rounded-full px-4 py-2.5 transition-colors hover:bg-black hover:text-white"
+                className="transition-colors hover:text-[#ff5a1f]"
               >
                 {item.label}
               </a>
             ))}
           </div>
 
+          <span aria-hidden="true" className="hidden h-6 w-px bg-black/10 md:block" />
+
           <div className="flex items-center gap-2">
             <a
               href="#contact"
-              className="inline-flex h-11 items-center justify-center rounded-full bg-black px-5 text-sm font-bold text-white shadow-[0_10px_24px_rgba(0,0,0,0.16)] transition-transform hover:scale-[1.02]"
+              className="inline-flex h-12 items-center justify-center rounded-[18px] bg-[#020713] px-6 text-base font-bold text-white shadow-[0_8px_18px_rgba(0,0,0,0.22)] transition-transform hover:scale-[1.02]"
             >
               Contact Me
             </a>
@@ -302,12 +306,12 @@ export default function Home() {
               kebutuhan pengguna.
             </p>
           </div>
-          <div className="project-grid grid overflow-visible rounded-[18px] border border-black/10 bg-white/75 md:grid-cols-3">
+          <div className="project-grid grid overflow-visible md:grid-cols-3">
             {projects.map((project, index) => (
               <Link
                 key={project.title}
                 href={`/project/${project.slug}`}
-                className="project-card group cursor-target flex min-h-[520px] flex-col overflow-hidden border-b border-black/10 bg-white/0 transition-[filter,opacity,transform,box-shadow] duration-500 ease-out last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0"
+                className="project-card group cursor-target flex min-h-[520px] flex-col overflow-hidden border border-black/10 bg-white/75 transition-[filter,opacity,transform,box-shadow] duration-500 ease-out"
                 data-scroll-reveal
                 style={
                   { "--reveal-delay": `${index * 90}ms` } as React.CSSProperties
@@ -350,14 +354,14 @@ export default function Home() {
           </div>
           <div>
             <div
-              className="certificate-grid grid overflow-visible rounded-[18px] border border-black/10 bg-white/75 md:grid-cols-2 lg:grid-cols-3"
+              className="certificate-grid grid overflow-visible md:grid-cols-3"
               data-scroll-reveal
               style={{ "--reveal-delay": "90ms" } as React.CSSProperties}
             >
               {certificates.map((certificate, index) => (
                 <article
                   key={certificate.title}
-                  className="certificate-card cursor-target flex min-h-[360px] flex-col overflow-hidden border-b border-black/10 bg-white/0 transition-[filter,opacity,transform,box-shadow] duration-500 ease-out last:border-b-0 md:border-b-0 md:border-r md:nth-[2n]:border-r-0 lg:nth-[2n]:border-r lg:nth-[3n]:border-r-0"
+                  className="certificate-card cursor-target flex min-h-[360px] flex-col overflow-hidden border border-black/10 bg-white/75 transition-[filter,opacity,transform,box-shadow] duration-500 ease-out"
                 >
                   <div className="flex flex-1 flex-col p-6 md:p-7">
                     <div className="flex items-start justify-between gap-4">

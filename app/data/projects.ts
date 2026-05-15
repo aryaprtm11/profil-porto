@@ -13,6 +13,17 @@ export const projects = [
     ],
   },
   {
+    slug: "ppid-itera",
+    title: "PPID ITERA",
+    subtitle: "Website for Public Information Disclosure services",
+    image: "/project/ppid-itera/PPID.jpg",
+    tags: [
+      { label: "Laravel", icon: "laravel" },
+      { label: "PHP", icon: "php" },
+      { label: "MySQL", icon: "mysql" },
+    ],
+  },
+  {
     slug: "posyandu",
     title: "Posyandu Banjar Agung",
     subtitle: "Website for Posyandu services and data recording for toddlers and the elderly",
@@ -40,9 +51,8 @@ export const projects = [
     subtitle: "A system for managing and tracking official correspondence",
     image: "/project/agenda-surat/Agenda.jpg",
     tags: [
-      { label: "Next JS", icon: "next" },
-      { label: "Arduino", icon: "arduino" },
-      { label: "Tailwind", icon: "tailwind" },
+      { label: "PHP", icon: "php" },
+      { label: "Laravel", icon: "laravel" }
     ],
   },
 ] satisfies {
