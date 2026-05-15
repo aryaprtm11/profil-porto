@@ -1,4 +1,5 @@
 import localFont from "next/font/local";
+import Link from "next/link";
 import type { IconType } from "react-icons";
 import { FaAws } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
@@ -220,6 +221,7 @@ export default function Home() {
 
   const projects = [
     {
+      slug: "personal-portfolio",
       title: "Personal Portfolio",
       subtitle: "Modern-minimalism portfolio website",
       description:
@@ -232,6 +234,7 @@ export default function Home() {
       ],
     },
     {
+      slug: "dashboard-interface",
       title: "Dashboard Interface",
       subtitle: "Admin dashboard concept",
       description:
@@ -244,6 +247,7 @@ export default function Home() {
       ],
     },
     {
+      slug: "landing-page-system",
       title: "Landing Page System",
       subtitle: "Responsive landing page system",
       description:
@@ -256,6 +260,7 @@ export default function Home() {
       ],
     },
   ] satisfies {
+    slug: string;
     title: string;
     subtitle: string;
     description: string;
@@ -498,8 +503,9 @@ export default function Home() {
           </div>
           <div className="project-grid grid overflow-visible rounded-[18px] border border-black/10 bg-white/75 md:grid-cols-3">
             {projects.map((project, index) => (
-              <article
+              <Link
                 key={project.title}
+                href={`/project/${project.slug}`}
                 className="project-card cursor-target flex min-h-[520px] flex-col overflow-hidden border-b border-black/10 bg-white/0 transition-[filter,opacity,transform,box-shadow] duration-500 ease-out last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0"
                 data-scroll-reveal
                 style={
@@ -519,8 +525,8 @@ export default function Home() {
                       {project.subtitle}
                     </p>
                     <p className="leading-7 text-black/55">
-                    {project.description}
-                  </p>
+                      {project.description}
+                    </p>
                   </div>
                 </div>
                 <div className="mt-auto flex flex-wrap gap-2 px-6 pb-7 md:px-7">
@@ -528,7 +534,7 @@ export default function Home() {
                     <TechPill key={tag.label} icon={tag.icon} label={tag.label} />
                   ))}
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </section>
@@ -586,31 +592,46 @@ export default function Home() {
 
         <section id="experience" className="scroll-mt-32 py-24">
           <div className="mb-10 max-w-3xl" data-scroll-reveal>
-            <h2 className="text-4xl font-bold leading-tight tracking-[-0.01em] sm:text-5xl">
-              Experience shaped through hands-on web work.
+            <h2 className={`${varien.className} text-5xl font-normal leading-[1.05] tracking-normal sm:text-7xl`}>
+              Experience
             </h2>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-black/60">
+              Pengalaman saya terbentuk dari proses mengerjakan project web
+              secara langsung, mulai dari menyusun tampilan, membangun komponen,
+              sampai menjaga hasil akhir tetap responsif dan mudah digunakan.
+            </p>
           </div>
-          <div className="space-y-5">
+          <div className="relative">
+            <div
+              aria-hidden="true"
+              className="absolute left-[15px] top-0 h-full w-px bg-black/10 md:left-[172px]"
+            />
             {experiences.map((experience, index) => (
               <article
                 key={experience.role}
-                className="cursor-target grid gap-5 rounded-[28px] border border-black/10 bg-white/85 p-7 backdrop-blur md:grid-cols-[0.8fr_1.2fr]"
+                className="cursor-target relative grid grid-cols-[32px_1fr] gap-x-5 pb-8 last:pb-0 md:grid-cols-[120px_64px_1fr]"
                 data-scroll-reveal
                 style={
                   { "--reveal-delay": `${index * 100}ms` } as React.CSSProperties
                 }
               >
-                <div>
+                <p className="hidden pt-6 text-right font-mono text-sm font-semibold uppercase text-black/35 md:block">
+                  {experience.period}
+                </p>
+                <div className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border border-black/10 bg-[#fbfbfa] font-mono text-xs font-bold text-black shadow-[0_8px_24px_rgba(0,0,0,0.08)] md:mx-auto md:mt-5">
+                  {String(index + 1).padStart(2, "0")}
+                </div>
+                <div className="rounded-[28px] border border-black/10 bg-white/85 p-7 backdrop-blur">
                   <p className="font-mono text-sm font-semibold uppercase text-[#6B3F69]">
                     {experience.period}
                   </p>
                   <h3 className="mt-3 text-2xl font-bold">
                     {experience.role}
                   </h3>
+                  <p className="mt-4 text-lg leading-8 text-black/60">
+                    {experience.detail}
+                  </p>
                 </div>
-                <p className="text-lg leading-8 text-black/60">
-                  {experience.detail}
-                </p>
               </article>
             ))}
           </div>

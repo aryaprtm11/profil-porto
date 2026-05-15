@@ -2,8 +2,38 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
+import { usePathname } from "next/navigation";
 
 export default function SmoothScroll() {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      anchors: {
+        duration: 1.35,
+        offset: 112,
+      },
+      lerp: 0.075,
+      smoothWheel: true,
+      touchMultiplier: 1,
+      wheelMultiplier: 0.82,
+    });
+
+    let frame = 0;
+
+    function raf(time: number) {
+      lenis.raf(time);
+      frame = requestAnimationFrame(raf);
+    }
+
+    frame = requestAnimationFrame(raf);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      lenis.destroy();
+    };
+  }, []);
+
   useEffect(() => {
     const revealElements =
       document.querySelectorAll<HTMLElement>("[data-scroll-reveal]");
@@ -31,32 +61,10 @@ export default function SmoothScroll() {
 
     revealElements.forEach((element) => revealObserver.observe(element));
 
-    const lenis = new Lenis({
-      anchors: {
-        duration: 1.35,
-        offset: 112,
-      },
-      lerp: 0.075,
-      smoothWheel: true,
-      touchMultiplier: 1,
-      wheelMultiplier: 0.82,
-    });
-
-    let frame = 0;
-
-    function raf(time: number) {
-      lenis.raf(time);
-      frame = requestAnimationFrame(raf);
-    }
-
-    frame = requestAnimationFrame(raf);
-
     return () => {
       revealObserver.disconnect();
-      cancelAnimationFrame(frame);
-      lenis.destroy();
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }
