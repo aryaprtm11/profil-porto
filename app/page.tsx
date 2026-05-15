@@ -1,7 +1,9 @@
 import localFont from "next/font/local";
 import type { IconType } from "react-icons";
 import { FaAws } from "react-icons/fa";
+import { FiExternalLink } from "react-icons/fi";
 import {
+  SiDocker,
   SiExpress,
   SiFigma,
   SiGit,
@@ -39,6 +41,7 @@ type SkillIcon =
   | "mysql"
   | "postgresql"
   | "mongodb"
+  | "docker"
   | "git"
   | "figma"
   | "vercel"
@@ -64,6 +67,7 @@ const skillIcons: Record<
   mysql: { Icon: SiMysql, className: "text-[#4479A1]" },
   postgresql: { Icon: SiPostgresql, className: "text-[#4169E1]" },
   mongodb: { Icon: SiMongodb, className: "text-[#47A248]" },
+  docker: { Icon: SiDocker, className: "text-[#2496ED]" },
   git: { Icon: SiGit, className: "text-[#F05032]" },
   figma: { Icon: SiFigma, className: "text-[#F24E1E]" },
   vercel: { Icon: SiVercel, className: "text-black" },
@@ -203,6 +207,7 @@ export default function Home() {
       title: "TOOLS",
       items: [
         { label: "Git", icon: "git" },
+        { label: "Docker", icon: "docker" },
         { label: "Figma", icon: "figma" },
         { label: "AWS", icon: "aws" },
         { label: "GCP", icon: "gcp" },
@@ -259,9 +264,27 @@ export default function Home() {
   }[];
 
   const certificates = [
-    "Frontend Development Fundamentals",
-    "Responsive Web Design",
-    "JavaScript Programming Basics",
+    {
+      title: "Frontend Development Fundamentals",
+      date: "Jan 2025",
+      description:
+        "Focused on practical foundations for building modern web interfaces.",
+      href: "#",
+    },
+    {
+      title: "Responsive Web Design",
+      date: "Mar 2025",
+      description:
+        "Focused on responsive layouts, accessibility, and clean interface structure.",
+      href: "#",
+    },
+    {
+      title: "JavaScript Programming Basics",
+      date: "Jun 2025",
+      description:
+        "Focused on JavaScript fundamentals for interactive web experiences.",
+      href: "#",
+    },
   ];
 
   const experiences = [
@@ -511,33 +534,50 @@ export default function Home() {
         </section>
 
         <section id="certificate" className="scroll-mt-32 py-24">
-          <div className="grid gap-10 md:grid-cols-[0.85fr_1.15fr] md:items-start">
-            <h2
-              className="text-4xl font-bold leading-tight tracking-[-0.01em] sm:text-5xl"
-              data-scroll-reveal
-            >
-              Learning records that support the work.
+          <div className="mb-10 max-w-3xl" data-scroll-reveal>
+            <h2 className={`${varien.className} text-5xl font-normal leading-[1.05] tracking-normal sm:text-7xl`}>
+              Certificate
             </h2>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-black/60">
+              Kumpulan sertifikat dan catatan belajar yang mendukung proses
+              saya dalam mengembangkan kemampuan web development secara
+              konsisten.
+            </p>
+          </div>
+          <div>
             <div
               className="cursor-target divide-y divide-black/10 rounded-[28px] border border-black/10 bg-white/85 backdrop-blur"
               data-scroll-reveal
-              style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
+              style={{ "--reveal-delay": "90ms" } as React.CSSProperties}
             >
               {certificates.map((certificate, index) => (
                 <article
-                  key={certificate}
-                  className="grid gap-3 p-6 sm:grid-cols-[72px_1fr]"
+                  key={certificate.title}
+                  className="grid gap-4 p-6 sm:grid-cols-[72px_1fr] lg:grid-cols-[72px_1fr_auto] lg:items-center"
                 >
                   <p className="font-mono text-sm font-semibold text-black/35">
                     {String(index + 1).padStart(2, "0")}
                   </p>
                   <div>
-                    <h3 className="text-xl font-bold">{certificate}</h3>
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                      <h3 className="text-xl font-bold">
+                        {certificate.title}
+                      </h3>
+                      <p className="font-mono text-sm font-semibold uppercase text-[#6B3F69]">
+                        {certificate.date}
+                      </p>
+                    </div>
                     <p className="mt-2 leading-7 text-black/60">
-                      Focused on practical foundations for building modern web
-                      interfaces.
+                      {certificate.description}
                     </p>
                   </div>
+                  <a
+                    href={certificate.href}
+                    className="inline-flex h-11 w-fit items-center justify-center gap-2 rounded-full bg-black px-5 text-sm font-bold text-white transition-transform hover:scale-[1.02] lg:justify-self-end"
+                  >
+                    View Certificate
+                    <FiExternalLink aria-hidden="true" className="h-4 w-4" />
+                  </a>
                 </article>
               ))}
             </div>
