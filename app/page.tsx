@@ -4,6 +4,15 @@ import type { IconType } from "react-icons";
 import { FaAws } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 import {
+  certificates,
+  experiences,
+  navItems,
+  projects,
+  skills,
+  type ProjectPreviewVariant,
+  type StackIcon as SkillIcon,
+} from "./data";
+import {
   SiDocker,
   SiExpress,
   SiFigma,
@@ -28,26 +37,6 @@ const varien = localFont({
   src: "../public/fonts/varien/Varien.otf",
   display: "swap",
 });
-
-type SkillIcon =
-  | "react"
-  | "next"
-  | "tailwind"
-  | "typescript"
-  | "vue"
-  | "node"
-  | "php"
-  | "laravel"
-  | "express"
-  | "mysql"
-  | "postgresql"
-  | "mongodb"
-  | "docker"
-  | "git"
-  | "figma"
-  | "vercel"
-  | "aws"
-  | "gcp";
 
 const skillIcons: Record<
   SkillIcon,
@@ -102,7 +91,7 @@ function TechPill({ icon, label }: { icon: SkillIcon; label: string }) {
   );
 }
 
-function ProjectPreview({ variant }: { variant: "portfolio" | "dashboard" | "landing" }) {
+function ProjectPreview({ variant }: { variant: ProjectPreviewVariant }) {
   if (variant === "dashboard") {
     return (
       <div className="relative h-56 overflow-hidden bg-[#eef0ff]">
@@ -169,144 +158,6 @@ function ProjectPreview({ variant }: { variant: "portfolio" | "dashboard" | "lan
 }
 
 export default function Home() {
-  const navItems = [
-    { label: "About", href: "#about" },
-    { label: "Skills", href: "#skills" },
-    { label: "Projects", href: "#projects" },
-    { label: "Certificate", href: "#certificate" },
-    { label: "Experience", href: "#experience" },
-  ];
-
-  const skills = [
-    {
-      title: "FRONT-END",
-      items: [
-        { label: "React", icon: "react" },
-        { label: "Next JS", icon: "next" },
-        { label: "Typescript", icon: "typescript" },
-        { label: "Vue JS", icon: "vue" },
-      ],
-    },
-    {
-      title: "BACK-END",
-      items: [
-        { label: "PHP", icon: "php" },
-        { label: "Laravel", icon: "laravel" },
-        { label: "Express JS", icon: "express" },
-        { label: "Node JS", icon: "node" },
-      ],
-    },
-    {
-      title: "DATABASE",
-      items: [
-        { label: "MySQL", icon: "mysql" },
-        { label: "PostgreSQL", icon: "postgresql" },
-        { label: "MongoDB", icon: "mongodb" },
-      ],
-    },
-    {
-      title: "TOOLS",
-      items: [
-        { label: "Git", icon: "git" },
-        { label: "Docker", icon: "docker" },
-        { label: "Figma", icon: "figma" },
-        { label: "AWS", icon: "aws" },
-        { label: "GCP", icon: "gcp" },
-      ],
-    },
-  ] satisfies {
-    title: string;
-    items: { label: string; icon: SkillIcon }[];
-  }[];
-
-  const projects = [
-    {
-      slug: "personal-portfolio",
-      title: "Personal Portfolio",
-      subtitle: "Modern-minimalism portfolio website",
-      description:
-        "A clean profile website designed to present identity, skills, work, and contact flow in one focused page.",
-      visual: "portfolio",
-      tags: [
-        { label: "Next JS", icon: "next" },
-        { label: "Tailwind", icon: "tailwind" },
-        { label: "Vercel", icon: "vercel" },
-      ],
-    },
-    {
-      slug: "dashboard-interface",
-      title: "Dashboard Interface",
-      subtitle: "Admin dashboard concept",
-      description:
-        "A structured admin dashboard concept with readable data cards, tables, and quick action patterns.",
-      visual: "dashboard",
-      tags: [
-        { label: "React", icon: "react" },
-        { label: "Typescript", icon: "typescript" },
-        { label: "PostgreSQL", icon: "postgresql" },
-      ],
-    },
-    {
-      slug: "landing-page-system",
-      title: "Landing Page System",
-      subtitle: "Responsive landing page system",
-      description:
-        "A conversion-focused landing page layout with clear hierarchy, CTA placement, and responsive sections.",
-      visual: "landing",
-      tags: [
-        { label: "Next JS", icon: "next" },
-        { label: "Figma", icon: "figma" },
-        { label: "Tailwind", icon: "tailwind" },
-      ],
-    },
-  ] satisfies {
-    slug: string;
-    title: string;
-    subtitle: string;
-    description: string;
-    visual: "portfolio" | "dashboard" | "landing";
-    tags: { label: string; icon: SkillIcon }[];
-  }[];
-
-  const certificates = [
-    {
-      title: "Frontend Development Fundamentals",
-      date: "Jan 2025",
-      description:
-        "Focused on practical foundations for building modern web interfaces.",
-      href: "#",
-    },
-    {
-      title: "Responsive Web Design",
-      date: "Mar 2025",
-      description:
-        "Focused on responsive layouts, accessibility, and clean interface structure.",
-      href: "#",
-    },
-    {
-      title: "JavaScript Programming Basics",
-      date: "Jun 2025",
-      description:
-        "Focused on JavaScript fundamentals for interactive web experiences.",
-      href: "#",
-    },
-  ];
-
-  const experiences = [
-    {
-      role: "Frontend Developer",
-      period: "2025 - Present",
-      detail:
-        "Building responsive interfaces and portfolio-ready web experiences with modern frontend tools.",
-    },
-    {
-      role: "Web Project Contributor",
-      period: "2024 - 2025",
-      detail:
-        "Worked on page layouts, reusable UI components, and improving visual consistency across screens.",
-    },
-  ];
-
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-[#fbfbfa] text-[#090909]">
       <div

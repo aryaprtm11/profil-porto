@@ -5,6 +5,12 @@ import type { CSSProperties } from "react";
 import type { IconType } from "react-icons";
 import { FiArrowLeft, FiExternalLink } from "react-icons/fi";
 import {
+  getProjectDetail,
+  projectDetails,
+  type DetailTagIcon,
+  type ProjectDetail,
+} from "../../data";
+import {
   SiFigma,
   SiNextdotjs,
   SiPostgresql,
@@ -13,32 +19,6 @@ import {
   SiTypescript,
   SiVercel,
 } from "react-icons/si";
-
-type ProjectSlug =
-  | "personal-portfolio"
-  | "dashboard-interface"
-  | "landing-page-system";
-
-type DetailTagIcon =
-  | "next"
-  | "tailwind"
-  | "vercel"
-  | "react"
-  | "typescript"
-  | "postgresql"
-  | "figma";
-
-type ProjectDetail = {
-  slug: ProjectSlug;
-  title: string;
-  subtitle: string;
-  overview: string;
-  challenge: string;
-  category: string;
-  scope: string;
-  accent: string;
-  tags: { label: string; icon: DetailTagIcon }[];
-};
 
 const tagIcons: Record<
   DetailTagIcon,
@@ -55,64 +35,6 @@ const tagIcons: Record<
   postgresql: { Icon: SiPostgresql, className: "text-[#4169E1]" },
   figma: { Icon: SiFigma, className: "text-[#F24E1E]" },
 };
-
-const projects: ProjectDetail[] = [
-  {
-    slug: "personal-portfolio",
-    title: "Personal Portfolio",
-    subtitle: "Modern-minimalism portfolio website",
-    overview:
-      "adalah website profil yang dirancang untuk menampilkan identitas, skill, project, certificate, experience, dan contact dalam satu alur yang fokus.",
-    challenge:
-      "Tantangan utamanya adalah menjaga tampilan tetap bersih tanpa kehilangan karakter visual. Struktur dibuat modular agar setiap section mudah dipindai, responsif, dan tetap nyaman dilihat di desktop maupun mobile.",
-    category: "Portfolio",
-    scope: "Frontend Development",
-    accent: "#ff5a1f",
-    tags: [
-      { label: "Next JS", icon: "next" },
-      { label: "Tailwind", icon: "tailwind" },
-      { label: "Vercel", icon: "vercel" },
-    ],
-  },
-  {
-    slug: "dashboard-interface",
-    title: "Dashboard Interface",
-    subtitle: "Admin dashboard concept",
-    overview:
-      "adalah konsep dashboard admin yang berfokus pada keterbacaan data, grouping informasi, dan akses cepat ke aksi penting.",
-    challenge:
-      "Tantangan desainnya adalah membuat komponen data terasa padat tetapi tidak berantakan. Layout menggunakan kartu ringkas, tabel sederhana, dan hierarchy yang jelas agar pengguna bisa memahami informasi lebih cepat.",
-    category: "Dashboard",
-    scope: "Interface Design",
-    accent: "#6B3F69",
-    tags: [
-      { label: "React", icon: "react" },
-      { label: "Typescript", icon: "typescript" },
-      { label: "PostgreSQL", icon: "postgresql" },
-    ],
-  },
-  {
-    slug: "landing-page-system",
-    title: "Landing Page System",
-    subtitle: "Responsive landing page system",
-    overview:
-      "adalah layout landing page responsif yang dibuat untuk menyusun pesan utama, CTA, dan konten pendukung secara jelas.",
-    challenge:
-      "Tantangannya adalah menjaga tiap section punya fungsi yang spesifik tanpa terasa seperti template generik. Struktur dibuat dengan ritme visual yang kuat, CTA yang mudah ditemukan, dan section yang tetap rapi di layar kecil.",
-    category: "Landing Page",
-    scope: "Product Website",
-    accent: "#2496ED",
-    tags: [
-      { label: "Next JS", icon: "next" },
-      { label: "Figma", icon: "figma" },
-      { label: "Tailwind", icon: "tailwind" },
-    ],
-  },
-];
-
-function getProject(slug: string) {
-  return projects.find((project) => project.slug === slug);
-}
 
 function DetailTag({ icon, label }: { icon: DetailTagIcon; label: string }) {
   const { Icon, className } = tagIcons[icon];
@@ -282,7 +204,7 @@ function BackgroundGrid() {
 }
 
 export function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.slug }));
+  return projectDetails.map((project) => ({ slug: project.slug }));
 }
 
 export async function generateMetadata({
@@ -291,7 +213,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const project = getProject(slug);
+  const project = getProjectDetail(slug);
 
   if (!project) {
     return {
@@ -311,7 +233,7 @@ export default async function ProjectDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const project = getProject(slug);
+  const project = getProjectDetail(slug);
 
   if (!project) {
     notFound();
