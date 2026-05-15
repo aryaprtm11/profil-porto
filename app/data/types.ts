@@ -12,13 +12,12 @@ export type StackIcon =
   | "postgresql"
   | "mongodb"
   | "docker"
+  | "arduino"
   | "git"
   | "figma"
   | "vercel"
   | "aws"
   | "gcp";
-
-export type ProjectPreviewVariant = "portfolio" | "dashboard" | "landing";
 
 export type DetailTagIcon =
   | "next"

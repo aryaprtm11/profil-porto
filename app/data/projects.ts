@@ -1,13 +1,11 @@
-import type { ProjectPreviewVariant, StackIcon } from "./types";
+import type { StackIcon } from "./types";
 
 export const projects = [
   {
-    slug: "personal-portfolio",
-    title: "Personal Portfolio",
-    subtitle: "Modern-minimalism portfolio website",
-    description:
-      "A clean profile website designed to present identity, skills, work, and contact flow in one focused page.",
-    visual: "portfolio",
+    slug: "kemahasiswaan-itera",
+    title: "Kemahasiswaan ITERA",
+    subtitle: "Student Activities Website",
+    image: "/project/posyandu/PosBan.jpg",
     tags: [
       { label: "Next JS", icon: "next" },
       { label: "Tailwind", icon: "tailwind" },
@@ -15,28 +13,35 @@ export const projects = [
     ],
   },
   {
-    slug: "dashboard-interface",
-    title: "Dashboard Interface",
-    subtitle: "Admin dashboard concept",
-    description:
-      "A structured admin dashboard concept with readable data cards, tables, and quick action patterns.",
-    visual: "dashboard",
+    slug: "posyandu",
+    title: "Posyandu Banjar Agung",
+    subtitle: "Website for Posyandu services and data recording for toddlers and the elderly",
+    image: "/project/posyandu/PosBan.jpg",
     tags: [
-      { label: "React", icon: "react" },
-      { label: "Typescript", icon: "typescript" },
-      { label: "PostgreSQL", icon: "postgresql" },
+      { label: "Laravel", icon: "laravel" },
+      { label: "PHP", icon: "php" },
+      { label: "MySQL", icon: "mysql" },
     ],
   },
   {
-    slug: "landing-page-system",
-    title: "Landing Page System",
-    subtitle: "Responsive landing page system",
-    description:
-      "A conversion-focused landing page layout with clear hierarchy, CTA placement, and responsive sections.",
-    visual: "landing",
+    slug: "hidroponic-system",
+    title: "Hidroponic Monitoring System",
+    subtitle: "A system for monitoring and controlling hydroponic plant growth using IoT sensors",
+    image: "/project/hidroponic/hidroponic.jpg",
     tags: [
       { label: "Next JS", icon: "next" },
-      { label: "Figma", icon: "figma" },
+      { label: "Arduino", icon: "arduino" },
+      { label: "Tailwind", icon: "tailwind" },
+    ],
+  },
+  {
+    slug: "agenda-surat",
+    title: "Agenda Surat",
+    subtitle: "A system for managing and tracking official correspondence",
+    image: "/project/agenda-surat/Agenda.jpg",
+    tags: [
+      { label: "Next JS", icon: "next" },
+      { label: "Arduino", icon: "arduino" },
       { label: "Tailwind", icon: "tailwind" },
     ],
   },
@@ -44,7 +49,6 @@ export const projects = [
   slug: string;
   title: string;
   subtitle: string;
-  description: string;
-  visual: ProjectPreviewVariant;
+  image: string;
   tags: { label: string; icon: StackIcon }[];
 }[];

@@ -138,10 +138,10 @@ function ProjectShowcase({ project }: { project: ProjectDetail }) {
           <p className="font-mono text-sm font-bold uppercase text-black/35">
             Project Notes
           </p>
-          <h2 className="mt-5 text-3xl font-bold leading-tight text-black">
+          <h2 className="mt-5 text-2xl font-bold leading-tight text-black">
             Clean layout, clear hierarchy, and responsive interaction.
           </h2>
-          <p className="mt-5 text-lg leading-8 text-black/60">
+          <p className="mt-5 text-base leading-7 text-black/60">
             Fokus halaman detail ini adalah menampilkan konteks project dengan
             ringkas, lalu memberi ruang besar untuk visual supaya hasil kerja
             lebih mudah dinilai.
@@ -305,11 +305,11 @@ export default async function ProjectDetailPage({
           style={{ "--reveal-delay": "80ms" } as CSSProperties}
         >
           <h1 className="sr-only">{project.title}</h1>
-          <p className="max-w-5xl text-lg leading-8 text-black/75">
+          <p className="max-w-5xl text-base leading-7 text-black/75">
             <span className="font-bold text-black">{project.title}</span>{" "}
             {project.overview}
           </p>
-          <p className="mt-6 max-w-5xl text-lg leading-8 text-black/75">
+          <p className="mt-6 max-w-5xl text-base leading-7 text-black/75">
             <span className="font-bold text-black">The challenge</span>{" "}
             {project.challenge}
           </p>
@@ -339,7 +339,7 @@ export default async function ProjectDetailPage({
               <p className="font-mono text-sm font-bold uppercase text-white/35">
                 Looking for a Developer?
               </p>
-              <h2 className="mt-4 max-w-2xl text-4xl font-bold leading-tight sm:text-5xl">
+              <h2 className="mt-4 max-w-2xl text-3xl font-bold leading-tight sm:text-4xl">
                 Saya bisa bantu bikin tampilan website yang clean dan responsif.
               </h2>
             </div>

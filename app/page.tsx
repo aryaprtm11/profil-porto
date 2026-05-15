@@ -1,4 +1,5 @@
 import localFont from "next/font/local";
+import Image from "next/image";
 import Link from "next/link";
 import type { IconType } from "react-icons";
 import { FaAws } from "react-icons/fa";
@@ -9,10 +10,10 @@ import {
   navItems,
   projects,
   skills,
-  type ProjectPreviewVariant,
   type StackIcon as SkillIcon,
 } from "./data";
 import {
+  SiArduino,
   SiDocker,
   SiExpress,
   SiFigma,
@@ -58,6 +59,7 @@ const skillIcons: Record<
   postgresql: { Icon: SiPostgresql, className: "text-[#4169E1]" },
   mongodb: { Icon: SiMongodb, className: "text-[#47A248]" },
   docker: { Icon: SiDocker, className: "text-[#2496ED]" },
+  arduino: { Icon: SiArduino, className: "text-[#00878F]" },
   git: { Icon: SiGit, className: "text-[#F05032]" },
   figma: { Icon: SiFigma, className: "text-[#F24E1E]" },
   vercel: { Icon: SiVercel, className: "text-black" },
@@ -91,68 +93,16 @@ function TechPill({ icon, label }: { icon: SkillIcon; label: string }) {
   );
 }
 
-function ProjectPreview({ variant }: { variant: ProjectPreviewVariant }) {
-  if (variant === "dashboard") {
-    return (
-      <div className="relative h-56 overflow-hidden bg-[#eef0ff]">
-        <div className="absolute -right-8 top-7 h-44 w-72 -rotate-[18deg] rounded-2xl border border-black/10 bg-white p-4 shadow-[0_18px_40px_rgba(0,0,0,0.12)]">
-          <div className="mb-4 h-6 w-28 rounded-full bg-black" />
-          <div className="grid grid-cols-3 gap-2">
-            <div className="h-16 rounded-xl bg-[#6B3F69]/20" />
-            <div className="h-16 rounded-xl bg-black/10" />
-            <div className="h-16 rounded-xl bg-[#ff5a1f]/20" />
-          </div>
-          <div className="mt-4 space-y-2">
-            <div className="h-2 rounded-full bg-black/15" />
-            <div className="h-2 w-4/5 rounded-full bg-black/10" />
-            <div className="h-2 w-2/3 rounded-full bg-black/10" />
-          </div>
-        </div>
-        <div className="absolute left-7 top-12 h-36 w-52 -rotate-[18deg] rounded-2xl border border-black/10 bg-white shadow-[0_18px_40px_rgba(0,0,0,0.1)]">
-          <div className="h-full rounded-2xl bg-[linear-gradient(135deg,#ffffff_0%,#ece8ff_100%)] p-4">
-            <div className="h-5 w-20 rounded-full bg-[#6B3F69]" />
-            <div className="mt-7 h-14 rounded-xl bg-black/10" />
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (variant === "landing") {
-    return (
-      <div className="relative h-56 overflow-hidden bg-[#edf2f7]">
-        <div className="absolute left-6 top-4 grid w-[330px] -rotate-[22deg] grid-cols-3 gap-3">
-          {Array.from({ length: 9 }).map((_, index) => (
-            <div
-              key={index}
-              className="h-28 rounded-[22px] border border-black/10 bg-white p-3 shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
-            >
-              <div className="mb-3 h-8 w-8 rounded-full bg-[#ff5a1f]/20" />
-              <div className="h-2 rounded-full bg-black/20" />
-              <div className="mt-2 h-2 w-2/3 rounded-full bg-black/10" />
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
+function ProjectPreview({ image, title }: { image: string; title: string }) {
   return (
     <div className="relative h-56 overflow-hidden bg-[#e8edf2]">
-      <div className="absolute -left-5 top-7 h-40 w-64 -rotate-[10deg] rounded-2xl bg-[#ff7a30] shadow-[0_18px_40px_rgba(0,0,0,0.12)]">
-        <div className="absolute left-8 top-8 grid h-16 w-16 place-items-center rounded-full bg-white text-sm font-black text-[#ff5a1f]">
-          AP
-        </div>
-      </div>
-      <div className="absolute right-8 top-9 h-40 w-72 rotate-[8deg] rounded-2xl border border-black/10 bg-white p-5 shadow-[0_18px_42px_rgba(0,0,0,0.12)]">
-        <div className="mb-5 h-5 w-36 rounded-full bg-black" />
-        <div className="space-y-2">
-          <div className="h-2 rounded-full bg-black/15" />
-          <div className="h-2 w-5/6 rounded-full bg-black/10" />
-          <div className="h-2 w-2/3 rounded-full bg-black/10" />
-        </div>
-        <div className="mt-7 h-9 rounded-full bg-[#ff5a1f]" />
-      </div>
+      <Image
+        src={image}
+        alt={`${title} preview`}
+        fill
+        sizes="(min-width: 768px) 33vw, 100vw"
+        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+      />
     </div>
   );
 }
@@ -276,10 +226,10 @@ export default function Home() {
           className="grid min-h-[calc(100vh-88px)] scroll-mt-32 items-center gap-12 py-24 lg:grid-cols-[1.1fr_0.9fr]"
         >
           <div className="order-2 max-w-3xl lg:order-1" data-scroll-reveal>
-            <h1 className={`${varien.className} text-5xl font-normal leading-[1.05] tracking-normal sm:text-7xl`}>
+            <h1 className={`${varien.className} text-[42px] font-normal leading-[1.05] tracking-normal sm:text-[56px]`}>
               About Arya Pratama
             </h1>
-            <p className="mt-8 max-w-2xl text-lg leading-8 text-black/60">
+            <p className="mt-8 max-w-2xl text-base leading-7 text-black/60">
               Saya adalah web developer yang berfokus pada pembuatan tampilan
               website yang rapi, responsif, dan mudah digunakan. Saya senang
               membangun pengalaman digital dengan struktur yang jelas, detail
@@ -305,10 +255,10 @@ export default function Home() {
 
         <section id="skills" className="scroll-mt-32 py-24">
           <div className="mb-10 max-w-3xl" data-scroll-reveal>
-            <h2 className={`${varien.className} text-5xl font-normal leading-[1.05] tracking-normal sm:text-7xl`}>
+            <h2 className={`${varien.className} text-[42px] font-normal leading-[1.05] tracking-normal sm:text-[56px]`}>
               Skill
             </h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-black/60">
+            <p className="mt-6 max-w-2xl text-base leading-7 text-black/60">
               Beberapa teknologi dan tools yang saya gunakan untuk membangun
               website yang responsif, terstruktur, dan nyaman digunakan.
             </p>
@@ -317,7 +267,7 @@ export default function Home() {
             {skills.map((group, index) => (
               <article
                 key={group.title}
-                className="cursor-target rounded-[28px] border border-black/10 bg-white/85 p-7 backdrop-blur"
+                className="cursor-target rounded-[28px] border border-black/10 bg-white/85 p-7 font-mono backdrop-blur"
                 data-scroll-reveal
                 style={
                   { "--reveal-delay": `${index * 90}ms` } as React.CSSProperties
@@ -343,10 +293,10 @@ export default function Home() {
 
         <section id="projects" className="scroll-mt-32 py-24">
           <div className="mb-10 max-w-3xl" data-scroll-reveal>
-            <h2 className={`${varien.className} text-5xl font-normal leading-[1.05] tracking-normal sm:text-7xl`}>
+            <h2 className={`${varien.className} text-[42px] font-normal leading-[1.05] tracking-normal sm:text-[56px]`}>
               Project
             </h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-black/60">
+            <p className="mt-6 max-w-2xl text-base leading-7 text-black/60">
               Beberapa project yang saya kerjakan untuk melatih kemampuan
               membangun tampilan website yang rapi, responsif, dan sesuai
               kebutuhan pengguna.
@@ -357,26 +307,23 @@ export default function Home() {
               <Link
                 key={project.title}
                 href={`/project/${project.slug}`}
-                className="project-card cursor-target flex min-h-[520px] flex-col overflow-hidden border-b border-black/10 bg-white/0 transition-[filter,opacity,transform,box-shadow] duration-500 ease-out last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0"
+                className="project-card group cursor-target flex min-h-[520px] flex-col overflow-hidden border-b border-black/10 bg-white/0 transition-[filter,opacity,transform,box-shadow] duration-500 ease-out last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0"
                 data-scroll-reveal
                 style={
                   { "--reveal-delay": `${index * 90}ms` } as React.CSSProperties
                 }
               >
-                <ProjectPreview variant={project.visual} />
+                <ProjectPreview image={project.image} title={project.title} />
                 <div>
                   <div className="flex flex-col gap-3 p-6 md:p-7">
                     <p className="font-mono text-base font-bold text-black/35">
                       {String(index + 1).padStart(2, "0")}
                     </p>
-                    <h3 className="text-lg font-bold leading-7 text-black">
+                    <h3 className="text-[15px] font-bold leading-6 text-black">
                       {project.title}
                     </h3>
                     <p className="leading-7 text-black/60">
                       {project.subtitle}
-                    </p>
-                    <p className="leading-7 text-black/55">
-                      {project.description}
                     </p>
                   </div>
                 </div>
@@ -392,10 +339,10 @@ export default function Home() {
 
         <section id="certificate" className="scroll-mt-32 py-24">
           <div className="mb-10 max-w-3xl" data-scroll-reveal>
-            <h2 className={`${varien.className} text-5xl font-normal leading-[1.05] tracking-normal sm:text-7xl`}>
+            <h2 className={`${varien.className} text-[42px] font-normal leading-[1.05] tracking-normal sm:text-[56px]`}>
               Certificate
             </h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-black/60">
+            <p className="mt-6 max-w-2xl text-base leading-7 text-black/60">
               Kumpulan sertifikat dan catatan belajar yang mendukung proses
               saya dalam mengembangkan kemampuan web development secara
               konsisten.
@@ -403,38 +350,40 @@ export default function Home() {
           </div>
           <div>
             <div
-              className="cursor-target divide-y divide-black/10 rounded-[28px] border border-black/10 bg-white/85 backdrop-blur"
+              className="certificate-grid grid overflow-visible rounded-[18px] border border-black/10 bg-white/75 md:grid-cols-2 lg:grid-cols-3"
               data-scroll-reveal
               style={{ "--reveal-delay": "90ms" } as React.CSSProperties}
             >
               {certificates.map((certificate, index) => (
                 <article
                   key={certificate.title}
-                  className="grid gap-4 p-6 sm:grid-cols-[72px_1fr] lg:grid-cols-[72px_1fr_auto] lg:items-center"
+                  className="certificate-card cursor-target flex min-h-[360px] flex-col overflow-hidden border-b border-black/10 bg-white/0 transition-[filter,opacity,transform,box-shadow] duration-500 ease-out last:border-b-0 md:border-b-0 md:border-r md:nth-[2n]:border-r-0 lg:nth-[2n]:border-r lg:nth-[3n]:border-r-0"
                 >
-                  <p className="font-mono text-sm font-semibold text-black/35">
-                    {String(index + 1).padStart(2, "0")}
-                  </p>
-                  <div>
-                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-                      <h3 className="text-xl font-bold">
-                        {certificate.title}
-                      </h3>
-                      <p className="font-mono text-sm font-semibold uppercase text-[#6B3F69]">
+                  <div className="flex flex-1 flex-col p-6 md:p-7">
+                    <div className="flex items-start justify-between gap-4">
+                      <p className="font-mono text-base font-bold text-black/35">
+                        {String(index + 1).padStart(2, "0")}
+                      </p>
+                      <p className="max-w-[13rem] text-right font-mono text-sm font-semibold uppercase text-[#6B3F69]">
                         {certificate.date}
                       </p>
                     </div>
-                    <p className="mt-2 leading-7 text-black/60">
+                    <h3 className="mt-4 text-base font-bold leading-6 text-black">
+                      {certificate.title}
+                    </h3>
+                    <p className="mt-3 leading-7 text-black/60">
                       {certificate.description}
                     </p>
+                    <a
+                      href={certificate.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-auto inline-flex h-11 w-fit translate-y-2 items-center justify-center gap-2 rounded-full bg-black px-5 text-sm font-bold text-white transition-transform hover:scale-[1.02]"
+                    >
+                      View Certificate
+                      <FiExternalLink aria-hidden="true" className="h-4 w-4" />
+                    </a>
                   </div>
-                  <a
-                    href={certificate.href}
-                    className="inline-flex h-11 w-fit items-center justify-center gap-2 rounded-full bg-black px-5 text-sm font-bold text-white transition-transform hover:scale-[1.02] lg:justify-self-end"
-                  >
-                    View Certificate
-                    <FiExternalLink aria-hidden="true" className="h-4 w-4" />
-                  </a>
                 </article>
               ))}
             </div>
@@ -443,10 +392,10 @@ export default function Home() {
 
         <section id="experience" className="scroll-mt-32 py-24">
           <div className="mb-10 max-w-3xl" data-scroll-reveal>
-            <h2 className={`${varien.className} text-5xl font-normal leading-[1.05] tracking-normal sm:text-7xl`}>
+            <h2 className={`${varien.className} text-[42px] font-normal leading-[1.05] tracking-normal sm:text-[56px]`}>
               Experience
             </h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-black/60">
+            <p className="mt-6 max-w-2xl text-base leading-7 text-black/60">
               Pengalaman saya terbentuk dari proses mengerjakan project web
               secara langsung, mulai dari menyusun tampilan, membangun komponen,
               sampai menjaga hasil akhir tetap responsif dan mudah digunakan.
@@ -476,10 +425,10 @@ export default function Home() {
                   <p className="font-mono text-sm font-semibold uppercase text-[#6B3F69]">
                     {experience.period}
                   </p>
-                  <h3 className="mt-3 text-2xl font-bold">
+                  <h3 className="mt-3 text-xl font-bold">
                     {experience.role}
                   </h3>
-                  <p className="mt-4 text-lg leading-8 text-black/60">
+                  <p className="mt-4 text-base leading-7 text-black/60">
                     {experience.detail}
                   </p>
                 </div>
@@ -495,10 +444,10 @@ export default function Home() {
           >
             <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
               <div>
-                <h2 className="max-w-2xl text-4xl font-bold leading-tight tracking-[-0.01em] sm:text-5xl">
+                <h2 className="max-w-2xl text-3xl font-bold leading-tight tracking-normal sm:text-4xl">
                   Interested in building something clean and useful?
                 </h2>
-                <p className="mt-5 max-w-xl text-lg leading-8 text-white/65">
+                <p className="mt-5 max-w-xl text-base leading-7 text-white/65">
                   Reach out for collaboration, portfolio feedback, or web
                   development projects.
                 </p>

@@ -7,6 +7,5 @@ export { skills } from "./skills";
 export type {
   DetailTagIcon,
   ProjectDetail,
-  ProjectPreviewVariant,
   StackIcon,
 } from "./types";
