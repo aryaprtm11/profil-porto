@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist_Mono, Poppins } from "next/font/google";
 import { LanguageProvider } from "./components/LanguageContext";
 import LoadingScreen from "./components/LoadingScreen";
+import MusicPlayer from "./components/MusicPlayer";
 import SmoothScroll from "./components/SmoothScroll";
 import TargetCursor from "./components/TargetCursor";
 import "lenis/dist/lenis.css";
@@ -44,6 +45,7 @@ export default function RootLayout({
           <SmoothScroll />
           <TargetCursor />
           {children}
+          <MusicPlayer />
         </LanguageProvider>
       </body>
     </html>

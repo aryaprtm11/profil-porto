@@ -25,6 +25,23 @@ body {
   font-family: var(--font-poppins), sans-serif;
 }
 
+@keyframes music-bar {
+  0%,
+  100% {
+    height: 8px;
+    opacity: 0.45;
+  }
+
+  50% {
+    height: 24px;
+    opacity: 1;
+  }
+}
+
+.animate-music-bar {
+  animation: music-bar 720ms ease-in-out infinite;
+}
+
 .lanyard-wrapper {
   position: relative;
   z-index: 0;
@@ -171,6 +188,10 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .animate-music-bar {
+    animation: none;
+  }
+
   [data-scroll-reveal] {
     opacity: 1;
     filter: none;

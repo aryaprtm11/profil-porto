@@ -219,7 +219,7 @@ export default function Home() {
 
           <div className="flex items-center gap-2">
             <a
-              href="#contact"
+              href="mailto:arya@example.com"
               className="inline-flex h-12 items-center justify-center rounded-full bg-[#020713] px-6 text-base font-bold text-white shadow-[0_8px_18px_rgba(0,0,0,0.22)] transition-transform hover:scale-[1.02]"
             >
               {copy.contactButton}
@@ -528,29 +528,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="scroll-mt-32 py-24">
-          <div
-            className="cursor-target rounded-[32px] border border-black/10 bg-[#111111] p-8 text-white md:p-10"
-            data-scroll-reveal
-          >
-            <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
-              <div>
-                <h2 className="max-w-2xl text-3xl font-bold leading-tight tracking-normal sm:text-4xl">
-                  {copy.contactTitle}
-                </h2>
-                <p className="mt-5 max-w-xl text-base leading-7 text-white/65">
-                  {copy.contactDescription}
-                </p>
-              </div>
-              <a
-                href="mailto:arya@example.com"
-                className="inline-flex h-12 items-center justify-center rounded-full bg-[#6B3F69] px-6 text-base font-bold text-white transition-colors hover:bg-[#7b4b79]"
-              >
-                {copy.emailButton}
-              </a>
-            </div>
-          </div>
-        </section>
       </main>
     </div>
   );
