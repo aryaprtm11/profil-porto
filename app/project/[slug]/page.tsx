@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { CSSProperties } from "react";
 import type { IconType } from "react-icons";
 import { FiArrowLeft, FiExternalLink } from "react-icons/fi";
+import LanguageToggle from "../../components/LanguageToggle";
 import {
   getProjectDetail,
   navItems,
@@ -252,14 +254,16 @@ export default async function ProjectDetailPage({
           <Link
             href="/"
             aria-label="Back to home"
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-xl font-bold text-[#111111]"
+            className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white"
           >
-            <span
-              className="translate-y-px"
-              style={{ fontFamily: '"MOONIC SERIF", "Times New Roman", serif' }}
-            >
-              V
-            </span>
+            <Image
+              src="/logo/AP.png"
+              alt="Arya Pratama logo"
+              fill
+              sizes="44px"
+              className="object-contain p-2"
+              priority
+            />
           </Link>
           <span aria-hidden="true" className="hidden h-6 w-px bg-black/10 md:block" />
           <div className="hidden items-center gap-5 text-sm font-medium text-[#172033] lg:gap-7 lg:text-base md:flex">
@@ -274,12 +278,15 @@ export default async function ProjectDetailPage({
             ))}
           </div>
           <span aria-hidden="true" className="hidden h-6 w-px bg-black/10 md:block" />
-          <Link
-            href="/#contact"
-            className="inline-flex h-12 items-center justify-center rounded-[18px] bg-[#020713] px-6 text-base font-bold text-white shadow-[0_8px_18px_rgba(0,0,0,0.22)] transition-transform hover:scale-[1.02]"
-          >
-            Contact Me
-          </Link>
+          <div className="flex items-center gap-2">
+            <Link
+              href="/#contact"
+              className="inline-flex h-12 items-center justify-center rounded-full bg-[#020713] px-6 text-base font-bold text-white shadow-[0_8px_18px_rgba(0,0,0,0.22)] transition-transform hover:scale-[1.02]"
+            >
+              Contact Me
+            </Link>
+            <LanguageToggle />
+          </div>
         </nav>
       </header>
 

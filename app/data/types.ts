@@ -1,3 +1,12 @@
+export type Language = "id" | "en";
+
+export type NavKey =
+  | "about"
+  | "skills"
+  | "projects"
+  | "certificate"
+  | "experience";
+
 export type StackIcon =
   | "react"
   | "next"

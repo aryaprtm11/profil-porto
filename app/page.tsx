@@ -1,9 +1,13 @@
+"use client";
+
 import localFont from "next/font/local";
 import Image from "next/image";
 import Link from "next/link";
 import type { IconType } from "react-icons";
 import { FaAws } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
+import LanguageToggle from "./components/LanguageToggle";
+import { useLanguage } from "./components/LanguageContext";
 import {
   certificates,
   experiences,
@@ -12,6 +16,12 @@ import {
   skills,
   type StackIcon as SkillIcon,
 } from "./data";
+import {
+  certificateDescriptionCopy,
+  experienceCopy,
+  homeCopy,
+  projectSubtitleCopy,
+} from "./data/translations";
 import {
   SiArduino,
   SiDocker,
@@ -108,6 +118,9 @@ function ProjectPreview({ image, title }: { image: string; title: string }) {
 }
 
 export default function Home() {
+  const { language } = useLanguage();
+  const copy = homeCopy[language];
+
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-[#fbfbfa] text-[#090909]">
       <div
@@ -165,14 +178,16 @@ export default function Home() {
           <a
             href="#"
             aria-label="Back to top"
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-xl font-bold text-[#111111] transition-transform hover:scale-[1.03]"
+            className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white transition-transform hover:scale-[1.03]"
           >
-            <span
-              className="translate-y-px"
-              style={{ fontFamily: '"MOONIC SERIF", "Times New Roman", serif' }}
-            >
-              V
-            </span>
+            <Image
+              src="/logo/AP.png"
+              alt="Arya Pratama logo"
+              fill
+              sizes="44px"
+              className="object-contain p-2"
+              priority
+            />
           </a>
 
           <span aria-hidden="true" className="hidden h-6 w-px bg-black/10 md:block" />
@@ -184,7 +199,7 @@ export default function Home() {
                 href={item.href}
                 className="transition-colors hover:text-[#ff5a1f]"
               >
-                {item.label}
+                {copy.nav[item.key]}
               </a>
             ))}
           </div>
@@ -194,10 +209,11 @@ export default function Home() {
           <div className="flex items-center gap-2">
             <a
               href="#contact"
-              className="inline-flex h-12 items-center justify-center rounded-[18px] bg-[#020713] px-6 text-base font-bold text-white shadow-[0_8px_18px_rgba(0,0,0,0.22)] transition-transform hover:scale-[1.02]"
+              className="inline-flex h-12 items-center justify-center rounded-full bg-[#020713] px-6 text-base font-bold text-white shadow-[0_8px_18px_rgba(0,0,0,0.22)] transition-transform hover:scale-[1.02]"
             >
-              Contact Me
+              {copy.contactButton}
             </a>
+            <LanguageToggle />
             <details className="group relative md:hidden">
               <summary
                 aria-label="Open navigation menu"
@@ -215,7 +231,7 @@ export default function Home() {
                     href={item.href}
                     className="block rounded-full px-4 py-3 text-sm font-semibold transition-colors hover:bg-black hover:text-white"
                   >
-                    {item.label}
+                    {copy.nav[item.key]}
                   </a>
                 ))}
               </div>
@@ -231,14 +247,10 @@ export default function Home() {
         >
           <div className="order-2 max-w-3xl lg:order-1" data-scroll-reveal>
             <h1 className={`${varien.className} text-[42px] font-normal leading-[1.05] tracking-normal sm:text-[56px]`}>
-              About Arya Pratama
+              {copy.aboutTitle}
             </h1>
             <p className="mt-8 max-w-2xl text-base leading-7 text-black/60">
-              Saya adalah web developer yang berfokus pada pembuatan tampilan
-              website yang rapi, responsif, dan mudah digunakan. Saya senang
-              membangun pengalaman digital dengan struktur yang jelas, detail
-              visual yang konsisten, dan performa yang nyaman di berbagai
-              perangkat.
+              {copy.aboutDescription}
             </p>
           </div>
           <div
@@ -260,11 +272,10 @@ export default function Home() {
         <section id="skills" className="scroll-mt-32 py-24">
           <div className="mb-10 max-w-3xl" data-scroll-reveal>
             <h2 className={`${varien.className} text-[42px] font-normal leading-[1.05] tracking-normal sm:text-[56px]`}>
-              Skill
+              {copy.skillsTitle}
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-7 text-black/60">
-              Beberapa teknologi dan tools yang saya gunakan untuk membangun
-              website yang responsif, terstruktur, dan nyaman digunakan.
+              {copy.skillsDescription}
             </p>
           </div>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -298,12 +309,10 @@ export default function Home() {
         <section id="projects" className="scroll-mt-32 py-24">
           <div className="mb-10 max-w-3xl" data-scroll-reveal>
             <h2 className={`${varien.className} text-[42px] font-normal leading-[1.05] tracking-normal sm:text-[56px]`}>
-              Project
+              {copy.projectsTitle}
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-7 text-black/60">
-              Beberapa project yang saya kerjakan untuk melatih kemampuan
-              membangun tampilan website yang rapi, responsif, dan sesuai
-              kebutuhan pengguna.
+              {copy.projectsDescription}
             </p>
           </div>
           <div className="project-grid grid overflow-visible md:grid-cols-3">
@@ -327,7 +336,8 @@ export default function Home() {
                       {project.title}
                     </h3>
                     <p className="leading-7 text-black/60">
-                      {project.subtitle}
+                      {projectSubtitleCopy[project.slug]?.[language] ??
+                        project.subtitle}
                     </p>
                   </div>
                 </div>
@@ -344,12 +354,10 @@ export default function Home() {
         <section id="certificate" className="scroll-mt-32 py-24">
           <div className="mb-10 max-w-3xl" data-scroll-reveal>
             <h2 className={`${varien.className} text-[42px] font-normal leading-[1.05] tracking-normal sm:text-[56px]`}>
-              Certificate
+              {copy.certificateTitle}
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-7 text-black/60">
-              Kumpulan sertifikat dan catatan belajar yang mendukung proses
-              saya dalam mengembangkan kemampuan web development secara
-              konsisten.
+              {copy.certificateDescription}
             </p>
           </div>
           <div>
@@ -376,7 +384,9 @@ export default function Home() {
                       {certificate.title}
                     </h3>
                     <p className="mt-3 leading-7 text-black/60">
-                      {certificate.description}
+                      {certificateDescriptionCopy[certificate.title]?.[
+                        language
+                      ] ?? certificate.description}
                     </p>
                     <a
                       href={certificate.href}
@@ -384,7 +394,7 @@ export default function Home() {
                       rel="noreferrer"
                       className="mt-auto inline-flex h-11 w-fit translate-y-2 items-center justify-center gap-2 rounded-full bg-black px-5 text-sm font-bold text-white transition-transform hover:scale-[1.02]"
                     >
-                      View Certificate
+                      {copy.viewCertificate}
                       <FiExternalLink aria-hidden="true" className="h-4 w-4" />
                     </a>
                   </div>
@@ -397,12 +407,10 @@ export default function Home() {
         <section id="experience" className="scroll-mt-32 py-24">
           <div className="mb-10 max-w-3xl" data-scroll-reveal>
             <h2 className={`${varien.className} text-[42px] font-normal leading-[1.05] tracking-normal sm:text-[56px]`}>
-              Experience
+              {copy.experienceTitle}
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-7 text-black/60">
-              Pengalaman saya terbentuk dari proses mengerjakan project web
-              secara langsung, mulai dari menyusun tampilan, membangun komponen,
-              sampai menjaga hasil akhir tetap responsif dan mudah digunakan.
+              {copy.experienceDescription}
             </p>
           </div>
           <div className="relative">
@@ -430,10 +438,12 @@ export default function Home() {
                     {experience.period}
                   </p>
                   <h3 className="mt-3 text-xl font-bold">
-                    {experience.role}
+                    {experienceCopy[experience.role]?.[language]?.role ??
+                      experience.role}
                   </h3>
                   <p className="mt-4 text-base leading-7 text-black/60">
-                    {experience.detail}
+                    {experienceCopy[experience.role]?.[language]?.detail ??
+                      experience.detail}
                   </p>
                 </div>
               </article>
@@ -449,18 +459,17 @@ export default function Home() {
             <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
               <div>
                 <h2 className="max-w-2xl text-3xl font-bold leading-tight tracking-normal sm:text-4xl">
-                  Interested in building something clean and useful?
+                  {copy.contactTitle}
                 </h2>
                 <p className="mt-5 max-w-xl text-base leading-7 text-white/65">
-                  Reach out for collaboration, portfolio feedback, or web
-                  development projects.
+                  {copy.contactDescription}
                 </p>
               </div>
               <a
                 href="mailto:arya@example.com"
                 className="inline-flex h-12 items-center justify-center rounded-full bg-[#6B3F69] px-6 text-base font-bold text-white transition-colors hover:bg-[#7b4b79]"
               >
-                Email Arya
+                {copy.emailButton}
               </a>
             </div>
           </div>
