@@ -4,8 +4,16 @@ type HomeCopy = {
   nav: Record<NavKey, string>;
   contactButton: string;
   viewCertificate: string;
+  heroTitle: string;
+  heroDescription: string;
   aboutTitle: string;
   aboutDescription: string;
+  aboutFocusTitle: string;
+  aboutFocusDescription: string;
+  aboutApproachTitle: string;
+  aboutApproachDescription: string;
+  aboutGoalTitle: string;
+  aboutGoalDescription: string;
   skillsTitle: string;
   skillsDescription: string;
   projectsTitle: string;
@@ -22,27 +30,39 @@ type HomeCopy = {
 export const homeCopy: Record<Language, HomeCopy> = {
   id: {
     nav: {
-      about: "About",
-      skills: "Skill",
-      projects: "Project",
-      certificate: "Certificate",
-      experience: "Experience",
+      about: "Tentang",
+      skills: "Keahlian",
+      projects: "Proyek",
+      certificate: "Sertifikat",
+      experience: "Pengalaman",
     },
     contactButton: "Contact Me",
     viewCertificate: "View Certificate",
-    aboutTitle: "About Arya Pratama",
+    heroTitle: "Halo, Saya Arya Pratama",
+    heroDescription:
+      "Saya membangun tampilan website yang clean, responsif, dan nyaman digunakan di berbagai perangkat.",
+    aboutTitle: "Tentang Arya Pratama",
     aboutDescription:
       "Saya adalah web developer yang berfokus pada pembuatan tampilan website yang rapi, responsif, dan mudah digunakan. Saya senang membangun pengalaman digital dengan struktur yang jelas, detail visual yang konsisten, dan performa yang nyaman di berbagai perangkat.",
-    skillsTitle: "Skill",
+    aboutFocusTitle: "Focus",
+    aboutFocusDescription:
+      "Membangun interface yang rapi, responsif, dan mudah dipahami pengguna.",
+    aboutApproachTitle: "Approach",
+    aboutApproachDescription:
+      "Memulai dari struktur konten, menjaga konsistensi visual, lalu memastikan hasilnya nyaman digunakan.",
+    aboutGoalTitle: "Goal",
+    aboutGoalDescription:
+      "Membuat website yang bukan hanya terlihat baik, tetapi juga terasa jelas dan berguna.",
+    skillsTitle: "Keahlian",
     skillsDescription:
       "Beberapa teknologi dan tools yang saya gunakan untuk membangun website yang responsif, terstruktur, dan nyaman digunakan.",
-    projectsTitle: "Project",
+    projectsTitle: "Proyek",
     projectsDescription:
       "Beberapa project yang saya kerjakan untuk melatih kemampuan membangun tampilan website yang rapi, responsif, dan sesuai kebutuhan pengguna.",
-    certificateTitle: "Certificate",
+    certificateTitle: "Sertifikat",
     certificateDescription:
       "Kumpulan sertifikat dan catatan belajar yang mendukung proses saya dalam mengembangkan kemampuan web development secara konsisten.",
-    experienceTitle: "Experience",
+    experienceTitle: "Pengalaman",
     experienceDescription:
       "Pengalaman saya terbentuk dari proses mengerjakan project web secara langsung, mulai dari menyusun tampilan, membangun komponen, sampai menjaga hasil akhir tetap responsif dan mudah digunakan.",
     contactTitle: "Tertarik membuat sesuatu yang clean dan berguna?",
@@ -60,9 +80,21 @@ export const homeCopy: Record<Language, HomeCopy> = {
     },
     contactButton: "Contact Me",
     viewCertificate: "View Certificate",
+    heroTitle: "Hello, I'm Arya Pratama",
+    heroDescription:
+      "I build clean, responsive, and comfortable website interfaces across devices.",
     aboutTitle: "About Arya Pratama",
     aboutDescription:
       "I am a web developer focused on building clean, responsive, and easy-to-use website interfaces. I enjoy creating digital experiences with clear structure, consistent visual details, and comfortable performance across devices.",
+    aboutFocusTitle: "Focus",
+    aboutFocusDescription:
+      "Building interfaces that are clean, responsive, and easy for users to understand.",
+    aboutApproachTitle: "Approach",
+    aboutApproachDescription:
+      "Starting from content structure, maintaining visual consistency, and making sure the result feels comfortable to use.",
+    aboutGoalTitle: "Goal",
+    aboutGoalDescription:
+      "Creating websites that do not only look good, but also feel clear and useful.",
     skillsTitle: "Skills",
     skillsDescription:
       "Technologies and tools I use to build responsive, structured, and comfortable web experiences.",

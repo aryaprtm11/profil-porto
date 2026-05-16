@@ -28,6 +28,8 @@ export type StackIcon =
   | "aws"
   | "gcp";
 
+export type SocialIcon = "github" | "linkedin" | "instagram" | "email";
+
 export type DetailTagIcon =
   | "next"
   | "tailwind"

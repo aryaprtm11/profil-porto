@@ -6,9 +6,9 @@ import type { CSSProperties } from "react";
 import type { IconType } from "react-icons";
 import { FiArrowLeft, FiExternalLink } from "react-icons/fi";
 import LanguageToggle from "../../components/LanguageToggle";
+import LocalizedNavLinks from "../../components/LocalizedNavLinks";
 import {
   getProjectDetail,
-  navItems,
   projectDetails,
   type DetailTagIcon,
   type ProjectDetail,
@@ -266,17 +266,7 @@ export default async function ProjectDetailPage({
             />
           </Link>
           <span aria-hidden="true" className="hidden h-6 w-px bg-black/10 md:block" />
-          <div className="hidden items-center gap-5 text-sm font-medium text-[#172033] lg:gap-7 lg:text-base md:flex">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={`/${item.href}`}
-                className="transition-colors hover:text-[#ff5a1f]"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
+          <LocalizedNavLinks hrefPrefix="/" />
           <span aria-hidden="true" className="hidden h-6 w-px bg-black/10 md:block" />
           <div className="flex items-center gap-2">
             <Link

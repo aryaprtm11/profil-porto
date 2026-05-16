@@ -4,8 +4,8 @@ import localFont from "next/font/local";
 import Image from "next/image";
 import Link from "next/link";
 import type { IconType } from "react-icons";
-import { FaAws } from "react-icons/fa";
-import { FiExternalLink } from "react-icons/fi";
+import { FaAws, FaLinkedinIn } from "react-icons/fa";
+import { FiExternalLink, FiMail } from "react-icons/fi";
 import LanguageToggle from "./components/LanguageToggle";
 import { useLanguage } from "./components/LanguageContext";
 import {
@@ -13,7 +13,9 @@ import {
   experiences,
   navItems,
   projects,
+  socials,
   skills,
+  type SocialIcon,
   type StackIcon as SkillIcon,
 } from "./data";
 import {
@@ -28,7 +30,9 @@ import {
   SiExpress,
   SiFigma,
   SiGit,
+  SiGithub,
   SiGooglecloud,
+  SiInstagram,
   SiLaravel,
   SiMongodb,
   SiMysql,
@@ -75,6 +79,13 @@ const skillIcons: Record<
   vercel: { Icon: SiVercel, className: "text-black" },
   aws: { Icon: FaAws, className: "text-[#FF9900]" },
   gcp: { Icon: SiGooglecloud, className: "text-[#4285F4]" },
+};
+
+const socialIcons: Record<SocialIcon, IconType> = {
+  github: SiGithub,
+  linkedin: FaLinkedinIn,
+  instagram: SiInstagram,
+  email: FiMail,
 };
 
 function SkillIconMark({ icon }: { icon: SkillIcon }) {
@@ -241,17 +252,33 @@ export default function Home() {
       </header>
 
       <main className="relative z-10 mx-auto max-w-6xl px-6 pt-24 sm:pt-28">
-        <section
-          id="about"
-          className="grid min-h-[calc(100vh-88px)] scroll-mt-32 items-center gap-12 py-24 lg:grid-cols-[1.1fr_0.9fr]"
-        >
+        <section className="grid min-h-[calc(100vh-88px)] items-center gap-12 py-24 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="order-2 max-w-3xl lg:order-1" data-scroll-reveal>
             <h1 className={`${varien.className} text-[42px] font-normal leading-[1.05] tracking-normal sm:text-[56px]`}>
-              {copy.aboutTitle}
+              {copy.heroTitle}
             </h1>
             <p className="mt-8 max-w-2xl text-base leading-7 text-black/60">
-              {copy.aboutDescription}
+              {copy.heroDescription}
             </p>
+            <div className="mt-7 flex flex-wrap items-center gap-3">
+              {socials.map((social) => {
+                const Icon = socialIcons[social.icon];
+                const isExternal = social.href.startsWith("http");
+
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    aria-label={social.label}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noreferrer" : undefined}
+                    className="cursor-target inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-white text-black shadow-[0_8px_18px_rgba(0,0,0,0.06)] transition-all hover:-translate-y-0.5 hover:bg-black hover:text-white"
+                  >
+                    <Icon aria-hidden="true" className="h-5 w-5" />
+                  </a>
+                );
+              })}
+            </div>
           </div>
           <div
             className="relative order-1 mx-auto -mb-24 -mt-28 h-[520px] w-full max-w-sm overflow-visible sm:h-[600px] lg:order-2 lg:mr-0 lg:-mb-0 lg:-mt-36 lg:h-[760px] lg:max-w-lg"
@@ -266,6 +293,56 @@ export default function Home() {
               fov={15}
               ropeLength={2.25}
             />
+          </div>
+        </section>
+
+        <section id="about" className="scroll-mt-32 py-24">
+          <div className="grid gap-10 border-y border-black/10 py-12 lg:grid-cols-[0.85fr_1.15fr] lg:py-16">
+            <div data-scroll-reveal>
+              <p className="font-mono text-sm font-bold uppercase text-[#ff5a1f]">
+                / Profile
+              </p>
+            <h1 className={`${varien.className} text-[42px] font-normal leading-[1.05] tracking-normal sm:text-[56px]`}>
+              {copy.aboutTitle}
+            </h1>
+            </div>
+            <div
+              className="space-y-8"
+              data-scroll-reveal
+              style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
+            >
+              <p className="max-w-3xl text-lg leading-8 text-black/65">
+                {copy.aboutDescription}
+              </p>
+              <div className="divide-y divide-black/10 border-y border-black/10">
+                {[
+                  {
+                    title: copy.aboutFocusTitle,
+                    description: copy.aboutFocusDescription,
+                  },
+                  {
+                    title: copy.aboutApproachTitle,
+                    description: copy.aboutApproachDescription,
+                  },
+                  {
+                    title: copy.aboutGoalTitle,
+                    description: copy.aboutGoalDescription,
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.title}
+                    className="grid gap-3 py-5 sm:grid-cols-[140px_1fr] sm:gap-8"
+                  >
+                    <p className="font-mono text-sm font-bold uppercase text-black/35">
+                      {item.title}
+                    </p>
+                    <p className="leading-7 text-black/60">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
