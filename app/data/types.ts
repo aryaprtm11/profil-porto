@@ -4,8 +4,8 @@ export type NavKey =
   | "about"
   | "skills"
   | "projects"
-  | "certificate"
-  | "experience";
+  | "experience"
+  | "certificate";
 
 export type StackIcon =
   | "react"
@@ -29,6 +29,13 @@ export type StackIcon =
   | "gcp";
 
 export type SocialIcon = "github" | "linkedin" | "instagram" | "email";
+
+export type Education = {
+  period: string;
+  institution: string;
+  major: string;
+  description: Record<Language, string>;
+};
 
 export type DetailTagIcon =
   | "next"

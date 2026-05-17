@@ -10,6 +10,7 @@ import LanguageToggle from "./components/LanguageToggle";
 import { useLanguage } from "./components/LanguageContext";
 import {
   certificates,
+  educations,
   experiences,
   navItems,
   projects,
@@ -297,7 +298,7 @@ export default function Home() {
         </section>
 
         <section id="about" className="scroll-mt-32 py-24">
-          <div className="grid gap-10 border-y border-black/10 py-12 lg:grid-cols-[0.85fr_1.15fr] lg:py-16">
+          <div className="grid gap-10 py-12 lg:grid-cols-[0.85fr_1.15fr] lg:py-16">
             <div data-scroll-reveal>
               <p className="font-mono text-sm font-bold uppercase text-[#ff5a1f]">
                 / Profile
@@ -314,33 +315,35 @@ export default function Home() {
               <p className="max-w-3xl text-lg leading-8 text-black/65">
                 {copy.aboutDescription}
               </p>
-              <div className="divide-y divide-black/10 border-y border-black/10">
-                {[
-                  {
-                    title: copy.aboutFocusTitle,
-                    description: copy.aboutFocusDescription,
-                  },
-                  {
-                    title: copy.aboutApproachTitle,
-                    description: copy.aboutApproachDescription,
-                  },
-                  {
-                    title: copy.aboutGoalTitle,
-                    description: copy.aboutGoalDescription,
-                  },
-                ].map((item) => (
-                  <div
-                    key={item.title}
-                    className="grid gap-3 py-5 sm:grid-cols-[140px_1fr] sm:gap-8"
-                  >
-                    <p className="font-mono text-sm font-bold uppercase text-black/35">
-                      {item.title}
-                    </p>
-                    <p className="leading-7 text-black/60">
-                      {item.description}
-                    </p>
-                  </div>
-                ))}
+              <div>
+                <p className="font-mono text-sm font-bold uppercase text-[#ff5a1f]">
+                  / {copy.educationTitle}
+                </p>
+                <div className="relative mt-6 border-l border-black/10 pl-7">
+                  {educations.map((education) => (
+                    <article
+                      key={`${education.period}-${education.institution}`}
+                      className="relative pb-8 last:pb-0"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="absolute -left-[34px] top-1.5 h-3.5 w-3.5 rounded-full border border-black/15 bg-[#fbfbfa] shadow-[0_0_0_6px_rgba(251,251,250,0.9)]"
+                      />
+                      <p className="font-mono text-sm font-bold uppercase text-black/35">
+                        {education.period}
+                      </p>
+                      <h3 className="mt-2 text-lg font-bold leading-7 text-black">
+                        {education.institution}
+                      </h3>
+                      <p className="mt-1 text-sm font-semibold text-[#6B3F69]">
+                        {education.major}
+                      </p>
+                      <p className="mt-3 leading-7 text-black/60">
+                        {education.description[language]}
+                      </p>
+                    </article>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -428,6 +431,53 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="experience" className="scroll-mt-32 py-24">
+          <div className="mb-10 max-w-3xl" data-scroll-reveal>
+            <h2 className={`${varien.className} text-[42px] font-normal leading-[1.05] tracking-normal sm:text-[56px]`}>
+              {copy.experienceTitle}
+            </h2>
+            <p className="mt-6 max-w-2xl text-base leading-7 text-black/60">
+              {copy.experienceDescription}
+            </p>
+          </div>
+          <div className="relative">
+            <div
+              aria-hidden="true"
+              className="absolute left-[15px] top-0 h-full w-px bg-black/10 md:left-[172px]"
+            />
+            {experiences.map((experience, index) => (
+              <article
+                key={experience.role}
+                className="cursor-target relative grid grid-cols-[32px_1fr] gap-x-5 pb-8 last:pb-0 md:grid-cols-[120px_64px_1fr]"
+                data-scroll-reveal
+                style={
+                  { "--reveal-delay": `${index * 100}ms` } as React.CSSProperties
+                }
+              >
+                <p className="hidden pt-6 text-right font-mono text-sm font-semibold uppercase text-black/35 md:block">
+                  {experience.period}
+                </p>
+                <div className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border border-black/10 bg-[#fbfbfa] font-mono text-xs font-bold text-black shadow-[0_8px_24px_rgba(0,0,0,0.08)] md:mx-auto md:mt-5">
+                  {String(index + 1).padStart(2, "0")}
+                </div>
+                <div className="rounded-[28px] border border-black/10 bg-white/85 p-7 backdrop-blur">
+                  <p className="font-mono text-sm font-semibold uppercase text-[#6B3F69]">
+                    {experience.period}
+                  </p>
+                  <h3 className="mt-3 text-xl font-bold">
+                    {experienceCopy[experience.role]?.[language]?.role ??
+                      experience.role}
+                  </h3>
+                  <p className="mt-4 text-base leading-7 text-black/60">
+                    {experienceCopy[experience.role]?.[language]?.detail ??
+                      experience.detail}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section id="certificate" className="scroll-mt-32 py-24">
           <div className="mb-10 max-w-3xl" data-scroll-reveal>
             <h2 className={`${varien.className} text-[42px] font-normal leading-[1.05] tracking-normal sm:text-[56px]`}>
@@ -478,53 +528,6 @@ export default function Home() {
                 </article>
               ))}
             </div>
-          </div>
-        </section>
-
-        <section id="experience" className="scroll-mt-32 py-24">
-          <div className="mb-10 max-w-3xl" data-scroll-reveal>
-            <h2 className={`${varien.className} text-[42px] font-normal leading-[1.05] tracking-normal sm:text-[56px]`}>
-              {copy.experienceTitle}
-            </h2>
-            <p className="mt-6 max-w-2xl text-base leading-7 text-black/60">
-              {copy.experienceDescription}
-            </p>
-          </div>
-          <div className="relative">
-            <div
-              aria-hidden="true"
-              className="absolute left-[15px] top-0 h-full w-px bg-black/10 md:left-[172px]"
-            />
-            {experiences.map((experience, index) => (
-              <article
-                key={experience.role}
-                className="cursor-target relative grid grid-cols-[32px_1fr] gap-x-5 pb-8 last:pb-0 md:grid-cols-[120px_64px_1fr]"
-                data-scroll-reveal
-                style={
-                  { "--reveal-delay": `${index * 100}ms` } as React.CSSProperties
-                }
-              >
-                <p className="hidden pt-6 text-right font-mono text-sm font-semibold uppercase text-black/35 md:block">
-                  {experience.period}
-                </p>
-                <div className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border border-black/10 bg-[#fbfbfa] font-mono text-xs font-bold text-black shadow-[0_8px_24px_rgba(0,0,0,0.08)] md:mx-auto md:mt-5">
-                  {String(index + 1).padStart(2, "0")}
-                </div>
-                <div className="rounded-[28px] border border-black/10 bg-white/85 p-7 backdrop-blur">
-                  <p className="font-mono text-sm font-semibold uppercase text-[#6B3F69]">
-                    {experience.period}
-                  </p>
-                  <h3 className="mt-3 text-xl font-bold">
-                    {experienceCopy[experience.role]?.[language]?.role ??
-                      experience.role}
-                  </h3>
-                  <p className="mt-4 text-base leading-7 text-black/60">
-                    {experienceCopy[experience.role]?.[language]?.detail ??
-                      experience.detail}
-                  </p>
-                </div>
-              </article>
-            ))}
           </div>
         </section>
 

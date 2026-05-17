@@ -8,12 +8,7 @@ type HomeCopy = {
   heroDescription: string;
   aboutTitle: string;
   aboutDescription: string;
-  aboutFocusTitle: string;
-  aboutFocusDescription: string;
-  aboutApproachTitle: string;
-  aboutApproachDescription: string;
-  aboutGoalTitle: string;
-  aboutGoalDescription: string;
+  educationTitle: string;
   skillsTitle: string;
   skillsDescription: string;
   projectsTitle: string;
@@ -44,15 +39,7 @@ export const homeCopy: Record<Language, HomeCopy> = {
     aboutTitle: "Tentang Arya Pratama",
     aboutDescription:
       "Saya adalah web developer yang berfokus pada pembuatan tampilan website yang rapi, responsif, dan mudah digunakan. Saya senang membangun pengalaman digital dengan struktur yang jelas, detail visual yang konsisten, dan performa yang nyaman di berbagai perangkat.",
-    aboutFocusTitle: "Focus",
-    aboutFocusDescription:
-      "Membangun interface yang rapi, responsif, dan mudah dipahami pengguna.",
-    aboutApproachTitle: "Approach",
-    aboutApproachDescription:
-      "Memulai dari struktur konten, menjaga konsistensi visual, lalu memastikan hasilnya nyaman digunakan.",
-    aboutGoalTitle: "Goal",
-    aboutGoalDescription:
-      "Membuat website yang bukan hanya terlihat baik, tetapi juga terasa jelas dan berguna.",
+    educationTitle: "Pendidikan",
     skillsTitle: "Keahlian",
     skillsDescription:
       "Beberapa teknologi dan tools yang saya gunakan untuk membangun website yang responsif, terstruktur, dan nyaman digunakan.",
@@ -86,15 +73,7 @@ export const homeCopy: Record<Language, HomeCopy> = {
     aboutTitle: "About Arya Pratama",
     aboutDescription:
       "I am a web developer focused on building clean, responsive, and easy-to-use website interfaces. I enjoy creating digital experiences with clear structure, consistent visual details, and comfortable performance across devices.",
-    aboutFocusTitle: "Focus",
-    aboutFocusDescription:
-      "Building interfaces that are clean, responsive, and easy for users to understand.",
-    aboutApproachTitle: "Approach",
-    aboutApproachDescription:
-      "Starting from content structure, maintaining visual consistency, and making sure the result feels comfortable to use.",
-    aboutGoalTitle: "Goal",
-    aboutGoalDescription:
-      "Creating websites that do not only look good, but also feel clear and useful.",
+    educationTitle: "Education",
     skillsTitle: "Skills",
     skillsDescription:
       "Technologies and tools I use to build responsive, structured, and comfortable web experiences.",
