@@ -11,7 +11,7 @@ export const educations: Education[] = [
     },
   },
   {
-    period: "2019 - 2022",
+    period: "2016 - 2020",
     institution: "Senior High School",
     major: "Science Major",
     description: {

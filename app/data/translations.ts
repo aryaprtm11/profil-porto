@@ -38,7 +38,7 @@ export const homeCopy: Record<Language, HomeCopy> = {
       "Mahasiswa semester akhir dengan program studi Teknik Informatika di Institut Teknologi Sumatera. Memiliki pengalaman dalam pengerjaan project dan ingin menjadi seorang software engineer.",
     aboutTitle: "Tentang Arya Pratama",
     aboutDescription:
-      "Saya adalah web developer yang berfokus pada pembuatan tampilan website yang rapi, responsif, dan mudah digunakan. Saya senang membangun pengalaman digital dengan struktur yang jelas, detail visual yang konsisten, dan performa yang nyaman di berbagai perangkat.",
+      "Mahasiswa Teknik Informatika semester 8 di Institut Teknologi Sumatera dengan IPK 3.22/4.00, dengan pengalaman PKL selama 3 bulan sebagai frontend web developer yang berhasil mengembangkan website Pejabat Pengelola Informasi dan Dokumentasi (PPID) di ITERA dengan menggunakan teknologi Next JS dan Typescript. Memiliki portofolio proyek tugas besar mata kuliah seperti website pemantauan tanaman hidroponik dengan integrasi IoT. Dikenal sebagai fast learner dan kemampuan adaptasi yang baik. Memiliki tujuan untuk dapat mengembangkan skill fullstack development agar dapat berkontribusi pada beberapa project besar.",
     educationTitle: "Pendidikan",
     skillsTitle: "Keahlian",
     skillsDescription:
@@ -48,10 +48,10 @@ export const homeCopy: Record<Language, HomeCopy> = {
       "Beberapa project yang saya kerjakan untuk melatih kemampuan membangun tampilan website yang rapi, responsif, dan sesuai kebutuhan pengguna.",
     certificateTitle: "Sertifikat",
     certificateDescription:
-      "Kumpulan sertifikat dan catatan belajar yang mendukung proses saya dalam mengembangkan kemampuan web development secara konsisten.",
+      "Kumpulan sertifikat, pelatihan, dan pencapaian yang mendukung proses belajar serta pengembangan kemampuan saya di bidang teknologi dan pengembangan diri.",
     experienceTitle: "Pengalaman",
     experienceDescription:
-      "Pengalaman saya terbentuk dari proses mengerjakan project web secara langsung, mulai dari menyusun tampilan, membangun komponen, sampai menjaga hasil akhir tetap responsif dan mudah digunakan.",
+      "Kumpulan pengalaman saya dalam kegiatan akademik, organisasi, asistensi, dan praktik kerja yang membentuk kemampuan teknis, komunikasi, serta adaptasi di berbagai lingkungan.",
     contactTitle: "Tertarik membuat sesuatu yang clean dan berguna?",
     contactDescription:
       "Hubungi saya untuk kolaborasi, feedback portfolio, atau project web development.",
@@ -72,7 +72,7 @@ export const homeCopy: Record<Language, HomeCopy> = {
       "A final-year Informatics Engineering student at Institut Teknologi Sumatera. Experienced in project development and aspiring to become a software engineer.",
     aboutTitle: "About Arya Pratama",
     aboutDescription:
-      "I am a web developer focused on building clean, responsive, and easy-to-use website interfaces. I enjoy creating digital experiences with clear structure, consistent visual details, and comfortable performance across devices.",
+      "An 8th-semester Informatics Engineering student at Institut Teknologi Sumatera with a GPA of 3.22/4.00. Completed a 3-month internship as a frontend web developer and successfully developed the Pejabat Pengelola Informasi dan Dokumentasi (PPID) website at ITERA using Next JS and Typescript. Has a portfolio of major coursework projects, including a hydroponic plant monitoring website with IoT integration. Known as a fast learner with strong adaptability, with the goal of developing fullstack development skills to contribute to larger-scale projects.",
     educationTitle: "Education",
     skillsTitle: "Skills",
     skillsDescription:
@@ -82,10 +82,10 @@ export const homeCopy: Record<Language, HomeCopy> = {
       "A selection of projects I built to practice creating clean, responsive interfaces that match user needs.",
     certificateTitle: "Certificate",
     certificateDescription:
-      "Certificates and learning records that support my process in consistently developing web development skills.",
+      "A collection of certificates, training records, and achievements that support my learning journey and skill development in technology and personal growth.",
     experienceTitle: "Experience",
     experienceDescription:
-      "My experience comes from hands-on web project work, from composing layouts and building components to keeping the final result responsive and easy to use.",
+      "A collection of my experiences across academic activities, organizations, assistant roles, and internships that shaped my technical, communication, and adaptability skills in different environments.",
     contactTitle: "Interested in building something clean and useful?",
     contactDescription:
       "Reach out for collaboration, portfolio feedback, or web development projects.",

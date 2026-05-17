@@ -7,9 +7,9 @@ export const projects = [
     subtitle: "Student Activities Website",
     image: "/project/kemahasiswaan/kemahasiswaan.png",
     tags: [
-      { label: "Next JS", icon: "next" },
-      { label: "Tailwind", icon: "tailwind" },
-      { label: "Vercel", icon: "vercel" },
+      { label: "PHP", icon: "php" },
+      { label: "Laravel", icon: "laravel" },
+      { label: "Vue JS", icon: "vue" },
     ],
   },
   {

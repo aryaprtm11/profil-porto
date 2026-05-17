@@ -251,9 +251,9 @@ export default function Home() {
                 aria-label="Open navigation menu"
                 className="inline-flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-full border border-black/10 bg-white text-[#111111] marker:hidden [&::-webkit-details-marker]:hidden"
               >
-                <span className="grid gap-1">
-                  <span className="block h-0.5 w-4 rounded-full bg-current transition-transform group-open:translate-y-1.5 group-open:rotate-45" />
-                  <span className="block h-0.5 w-4 rounded-full bg-current transition-transform group-open:-translate-y-1.5 group-open:-rotate-45" />
+                <span className="relative block h-4 w-4">
+                  <span className="absolute left-0 top-1/2 block h-0.5 w-4 -translate-y-1 rounded-full bg-current transition-transform group-open:translate-y-0 group-open:rotate-45" />
+                  <span className="absolute left-0 top-1/2 block h-0.5 w-4 translate-y-1 rounded-full bg-current transition-transform group-open:translate-y-0 group-open:-rotate-45" />
                 </span>
               </summary>
               <div className="absolute right-0 top-14 w-52 rounded-[24px] border border-black/10 bg-[#fbfbfa] p-2 shadow-[0_18px_48px_rgba(0,0,0,0.12)]">
