@@ -10,6 +10,10 @@ const welcomeWords = [
   "Bienvenue",
   "Willkommen",
   "ようこそ",
+  "Benvenuto",
+  "Bem-vindo",
+  "환영합니다",
+  "欢迎",
 ];
 
 const textInterval = 300;

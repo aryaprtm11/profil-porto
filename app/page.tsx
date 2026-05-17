@@ -2,10 +2,12 @@
 
 import localFont from "next/font/local";
 import Image from "next/image";
-import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import type { IconType } from "react-icons";
 import { FaAws, FaLinkedinIn } from "react-icons/fa";
 import { FiExternalLink, FiMail } from "react-icons/fi";
+import DecryptedText from "./components/DecryptedText";
+import ExperienceTimeline from "./components/ExperienceTimeline";
 import LanguageToggle from "./components/LanguageToggle";
 import { useLanguage } from "./components/LanguageContext";
 import {
@@ -132,6 +134,30 @@ function ProjectPreview({ image, title }: { image: string; title: string }) {
 export default function Home() {
   const { language } = useLanguage();
   const copy = homeCopy[language];
+  const skillsSectionRef = useRef<HTMLElement>(null);
+  const [skillDecryptTrigger, setSkillDecryptTrigger] = useState(0);
+
+  useEffect(() => {
+    if (!skillsSectionRef.current) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setSkillDecryptTrigger((currentTrigger) => currentTrigger + 1);
+        }
+      },
+      {
+        rootMargin: "0px 0px -35% 0px",
+        threshold: 0.25,
+      }
+    );
+
+    observer.observe(skillsSectionRef.current);
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-[#fbfbfa] text-[#090909]">
@@ -185,19 +211,19 @@ export default function Home() {
       <header className="fixed inset-x-0 top-4 z-50 px-4 sm:top-5">
         <nav
           aria-label="Primary navigation"
-          className="mx-auto flex w-fit items-center gap-3 rounded-full border border-black/10 bg-[#fbfbfa]/90 p-2 font-sans shadow-[0_14px_36px_rgba(0,0,0,0.08)] backdrop-blur-xl md:gap-5"
+          className="mx-auto flex w-fit items-center gap-4 rounded-full border border-black/10 bg-[#fbfbfa]/90 py-2 pl-4 pr-2 font-sans shadow-[0_14px_36px_rgba(0,0,0,0.08)] backdrop-blur-xl md:gap-5"
         >
           <a
             href="#"
             aria-label="Back to top"
-            className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white transition-transform hover:scale-[1.03]"
+            className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden transition-transform hover:scale-[1.03]"
           >
             <Image
               src="/logo/AP.png"
               alt="Arya Pratama logo"
               fill
               sizes="44px"
-              className="object-contain p-2"
+              className="object-contain"
               priority
             />
           </a>
@@ -209,7 +235,7 @@ export default function Home() {
               <a
                 key={item.href}
                 href={item.href}
-                className="transition-colors hover:text-[#ff5a1f]"
+                className="transition-colors hover:text-[#810B38]"
               >
                 {copy.nav[item.key]}
               </a>
@@ -219,12 +245,6 @@ export default function Home() {
           <span aria-hidden="true" className="hidden h-6 w-px bg-black/10 md:block" />
 
           <div className="flex items-center gap-2">
-            <a
-              href="mailto:arya@example.com"
-              className="inline-flex h-12 items-center justify-center rounded-full bg-[#020713] px-6 text-base font-bold text-white shadow-[0_8px_18px_rgba(0,0,0,0.22)] transition-transform hover:scale-[1.02]"
-            >
-              {copy.contactButton}
-            </a>
             <LanguageToggle />
             <details className="group relative md:hidden">
               <summary
@@ -300,9 +320,6 @@ export default function Home() {
         <section id="about" className="scroll-mt-32 py-24">
           <div className="grid gap-10 py-12 lg:grid-cols-[0.85fr_1.15fr] lg:py-16">
             <div data-scroll-reveal>
-              <p className="font-mono text-sm font-bold uppercase text-[#ff5a1f]">
-                / Profile
-              </p>
             <h1 className={`${varien.className} text-[42px] font-normal leading-[1.05] tracking-normal sm:text-[56px]`}>
               {copy.aboutTitle}
             </h1>
@@ -316,7 +333,7 @@ export default function Home() {
                 {copy.aboutDescription}
               </p>
               <div>
-                <p className="font-mono text-sm font-bold uppercase text-[#ff5a1f]">
+                <p className="font-mono text-sm font-bold uppercase text-[#810B38]">
                   / {copy.educationTitle}
                 </p>
                 <div className="relative mt-6 border-l border-black/10 pl-7">
@@ -349,7 +366,11 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="skills" className="scroll-mt-32 py-24">
+        <section
+          id="skills"
+          ref={skillsSectionRef}
+          className="scroll-mt-32 py-24"
+        >
           <div className="mb-10 max-w-3xl" data-scroll-reveal>
             <h2 className={`${varien.className} text-[42px] font-normal leading-[1.05] tracking-normal sm:text-[56px]`}>
               {copy.skillsTitle}
@@ -368,16 +389,21 @@ export default function Home() {
                   { "--reveal-delay": `${index * 90}ms` } as React.CSSProperties
                 }
               >
-                <p className="mb-5 text-sm font-bold uppercase text-[#ff5a1f]">
+                <p className="mb-5 text-sm font-bold uppercase text-[#810B38]">
                   / {group.title}
                 </p>
                 <div className="space-y-4">
                   {group.items.map((item) => (
                     <div key={item.label} className="flex items-center gap-4">
                       <SkillIconMark icon={item.icon} />
-                      <span className="text-sm font-medium text-black/60">
-                        {item.label}
-                      </span>
+                      <DecryptedText
+                        key={item.label}
+                        text={item.label}
+                        trigger={skillDecryptTrigger}
+                        speed={80}
+                        maxIterations={200}
+                        className="text-sm font-medium text-black/60 outline-none transition-colors focus:text-black group-hover:text-black/70"
+                      />
                     </div>
                   ))}
                 </div>
@@ -397,9 +423,8 @@ export default function Home() {
           </div>
           <div className="project-grid grid overflow-visible md:grid-cols-3">
             {projects.map((project, index) => (
-              <Link
+              <article
                 key={project.title}
-                href={`/project/${project.slug}`}
                 className="project-card group cursor-target flex min-h-[520px] flex-col overflow-hidden border border-black/10 bg-white/75 transition-[filter,opacity,transform,box-shadow] duration-500 ease-out"
                 data-scroll-reveal
                 style={
@@ -426,7 +451,7 @@ export default function Home() {
                     <TechPill key={tag.label} icon={tag.icon} label={tag.label} />
                   ))}
                 </div>
-              </Link>
+              </article>
             ))}
           </div>
         </section>
@@ -440,42 +465,18 @@ export default function Home() {
               {copy.experienceDescription}
             </p>
           </div>
-          <div className="relative">
-            <div
-              aria-hidden="true"
-              className="absolute left-[15px] top-0 h-full w-px bg-black/10 md:left-[172px]"
-            />
-            {experiences.map((experience, index) => (
-              <article
-                key={experience.role}
-                className="cursor-target relative grid grid-cols-[32px_1fr] gap-x-5 pb-8 last:pb-0 md:grid-cols-[120px_64px_1fr]"
-                data-scroll-reveal
-                style={
-                  { "--reveal-delay": `${index * 100}ms` } as React.CSSProperties
-                }
-              >
-                <p className="hidden pt-6 text-right font-mono text-sm font-semibold uppercase text-black/35 md:block">
-                  {experience.period}
-                </p>
-                <div className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border border-black/10 bg-[#fbfbfa] font-mono text-xs font-bold text-black shadow-[0_8px_24px_rgba(0,0,0,0.08)] md:mx-auto md:mt-5">
-                  {String(index + 1).padStart(2, "0")}
-                </div>
-                <div className="rounded-[28px] border border-black/10 bg-white/85 p-7 backdrop-blur">
-                  <p className="font-mono text-sm font-semibold uppercase text-[#6B3F69]">
-                    {experience.period}
-                  </p>
-                  <h3 className="mt-3 text-xl font-bold">
-                    {experienceCopy[experience.role]?.[language]?.role ??
-                      experience.role}
-                  </h3>
-                  <p className="mt-4 text-base leading-7 text-black/60">
-                    {experienceCopy[experience.role]?.[language]?.detail ??
-                      experience.detail}
-                  </p>
-                </div>
-              </article>
-            ))}
-          </div>
+          <ExperienceTimeline
+            entries={experiences.map((experience) => ({
+              title: experience.period,
+              role:
+                experienceCopy[experience.role]?.[language]?.role ??
+                experience.role,
+              detail:
+                experienceCopy[experience.role]?.[language]?.detail ??
+                experience.detail,
+              image: experience.image,
+            }))}
+          />
         </section>
 
         <section id="certificate" className="scroll-mt-32 py-24">

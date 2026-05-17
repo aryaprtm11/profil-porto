@@ -14,7 +14,7 @@ type LocalizedNavLinksProps = {
 export default function LocalizedNavLinks({
   hrefPrefix = "",
   className = "hidden items-center gap-5 text-sm font-medium text-[#172033] lg:gap-7 lg:text-base md:flex",
-  itemClassName = "transition-colors hover:text-[#ff5a1f]",
+  itemClassName = "transition-colors hover:text-[#810B38]",
 }: LocalizedNavLinksProps) {
   const { language } = useLanguage();
   const copy = homeCopy[language];

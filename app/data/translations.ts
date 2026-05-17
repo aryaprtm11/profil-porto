@@ -35,7 +35,7 @@ export const homeCopy: Record<Language, HomeCopy> = {
     viewCertificate: "View Certificate",
     heroTitle: "Halo, Saya Arya Pratama",
     heroDescription:
-      "Saya membangun tampilan website yang clean, responsif, dan nyaman digunakan di berbagai perangkat.",
+      "Mahasiswa semester akhir dengan program studi Teknik Informatika di Institut Teknologi Sumatera. Memiliki pengalaman dalam pengerjaan project dan ingin menjadi seorang software engineer.",
     aboutTitle: "Tentang Arya Pratama",
     aboutDescription:
       "Saya adalah web developer yang berfokus pada pembuatan tampilan website yang rapi, responsif, dan mudah digunakan. Saya senang membangun pengalaman digital dengan struktur yang jelas, detail visual yang konsisten, dan performa yang nyaman di berbagai perangkat.",
@@ -69,7 +69,7 @@ export const homeCopy: Record<Language, HomeCopy> = {
     viewCertificate: "View Certificate",
     heroTitle: "Hello, I'm Arya Pratama",
     heroDescription:
-      "I build clean, responsive, and comfortable website interfaces across devices.",
+      "A final-year Informatics Engineering student at Institut Teknologi Sumatera. Experienced in project development and aspiring to become a software engineer.",
     aboutTitle: "About Arya Pratama",
     aboutDescription:
       "I am a web developer focused on building clean, responsive, and easy-to-use website interfaces. I enjoy creating digital experiences with clear structure, consistent visual details, and comfortable performance across devices.",

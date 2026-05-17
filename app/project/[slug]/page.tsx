@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { CSSProperties } from "react";
 import type { IconType } from "react-icons";
-import { FiArrowLeft, FiExternalLink } from "react-icons/fi";
+import { FiArrowLeft } from "react-icons/fi";
 import LanguageToggle from "../../components/LanguageToggle";
 import LocalizedNavLinks from "../../components/LocalizedNavLinks";
 import {
@@ -249,19 +249,19 @@ export default async function ProjectDetailPage({
       <header className="fixed inset-x-0 top-4 z-50 px-4 sm:top-5">
         <nav
           aria-label="Project navigation"
-          className="mx-auto flex w-fit items-center gap-3 rounded-full border border-black/10 bg-[#fbfbfa]/90 p-2 font-sans shadow-[0_14px_36px_rgba(0,0,0,0.08)] backdrop-blur-xl md:gap-5"
+          className="mx-auto flex w-fit items-center gap-4 rounded-full border border-black/10 bg-[#fbfbfa]/90 py-2 pl-4 pr-2 font-sans shadow-[0_14px_36px_rgba(0,0,0,0.08)] backdrop-blur-xl md:gap-5"
         >
           <Link
             href="/"
             aria-label="Back to home"
-            className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white"
+            className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden"
           >
             <Image
               src="/logo/AP.png"
               alt="Arya Pratama logo"
               fill
               sizes="44px"
-              className="object-contain p-2"
+              className="object-contain"
               priority
             />
           </Link>
@@ -269,12 +269,6 @@ export default async function ProjectDetailPage({
           <LocalizedNavLinks hrefPrefix="/" />
           <span aria-hidden="true" className="hidden h-6 w-px bg-black/10 md:block" />
           <div className="flex items-center gap-2">
-            <Link
-              href="/#contact"
-              className="inline-flex h-12 items-center justify-center rounded-full bg-[#020713] px-6 text-base font-bold text-white shadow-[0_8px_18px_rgba(0,0,0,0.22)] transition-transform hover:scale-[1.02]"
-            >
-              Contact Me
-            </Link>
             <LanguageToggle />
           </div>
         </nav>
@@ -334,13 +328,6 @@ export default async function ProjectDetailPage({
                 Saya bisa bantu bikin tampilan website yang clean dan responsif.
               </h2>
             </div>
-            <Link
-              href="/#contact"
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-white px-6 text-base font-bold text-black transition-transform hover:scale-[1.02]"
-            >
-              Contact Me
-              <FiExternalLink aria-hidden="true" className="h-4 w-4" />
-            </Link>
           </div>
         </section>
       </main>

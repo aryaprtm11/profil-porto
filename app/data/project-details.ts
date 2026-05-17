@@ -11,7 +11,7 @@ export const projectDetails: ProjectDetail[] = [
       "Tantangan utamanya adalah menjaga tampilan tetap bersih tanpa kehilangan karakter visual. Struktur dibuat modular agar setiap section mudah dipindai, responsif, dan tetap nyaman dilihat di desktop maupun mobile.",
     category: "Portfolio",
     scope: "Frontend Development",
-    accent: "#ff5a1f",
+    accent: "#810B38",
     tags: [
       { label: "Next JS", icon: "next" },
       { label: "Tailwind", icon: "tailwind" },

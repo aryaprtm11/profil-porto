@@ -5,7 +5,7 @@ export const projects = [
     slug: "kemahasiswaan-itera",
     title: "Kemahasiswaan ITERA",
     subtitle: "Student Activities Website",
-    image: "/project/posyandu/PosBan.jpg",
+    image: "/project/kemahasiswaan/kemahasiswaan.png",
     tags: [
       { label: "Next JS", icon: "next" },
       { label: "Tailwind", icon: "tailwind" },
@@ -16,7 +16,7 @@ export const projects = [
     slug: "ppid-itera",
     title: "PPID ITERA",
     subtitle: "Website for Public Information Disclosure services",
-    image: "/project/ppid-itera/PPID.jpg",
+    image: "/project/ppid-itera/PPID.png",
     tags: [
       { label: "Laravel", icon: "laravel" },
       { label: "PHP", icon: "php" },

@@ -7,22 +7,22 @@ export const socials: {
 }[] = [
   {
     label: "GitHub",
-    href: "https://github.com/",
+    href: "https://github.com/aryaprtm11",
     icon: "github",
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/",
+    href: "https://linkedin.com/in/arya-pratama-2a8420265/",
     icon: "linkedin",
   },
   {
     label: "Instagram",
-    href: "https://www.instagram.com/",
+    href: "https://www.instagram.com/arya.prtma11/",
     icon: "instagram",
   },
   {
     label: "Email",
-    href: "mailto:arya@example.com",
+    href: "mailto:arya.prtama89@gmail.com",
     icon: "email",
   },
 ];
