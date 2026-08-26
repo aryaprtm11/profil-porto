@@ -38,7 +38,7 @@ export const homeCopy: Record<Language, HomeCopy> = {
       "Mahasiswa semester akhir dengan program studi Teknik Informatika di Institut Teknologi Sumatera. Memiliki pengalaman dalam pengerjaan project dan ingin menjadi seorang software engineer.",
     aboutTitle: "Tentang Arya Pratama",
     aboutDescription:
-      "Mahasiswa Teknik Informatika semester 8 di Institut Teknologi Sumatera dengan IPK 3.22/4.00, dengan pengalaman PKL selama 3 bulan sebagai frontend web developer yang berhasil mengembangkan website Pejabat Pengelola Informasi dan Dokumentasi (PPID) di ITERA dengan menggunakan teknologi Next JS dan Typescript. Memiliki portofolio proyek tugas besar mata kuliah seperti website pemantauan tanaman hidroponik dengan integrasi IoT. Dikenal sebagai fast learner dan kemampuan adaptasi yang baik. Memiliki tujuan untuk dapat mengembangkan skill fullstack development agar dapat berkontribusi pada beberapa project besar.",
+      "Fresh graduate Teknik Informatika dengan pengalaman langsung dalam pengembangan web fullstack menggunakan PHP, Laravel, Vue.js, dan MySQL. Berpengalaman dalam mengembangkan REST API, sistem autentikasi dan otorisasi, dashboard responsif, sistem manajemen konten, serta otomasi dokumen. Familiar dengan Laravel Sanctum, keamanan aplikasi, Docker, AWS, dan cloud deployment. Mencari peluang sebagai Fullstack atau Backend Developer dengan fokus pada PHP dan Laravel.",
     educationTitle: "Pendidikan",
     skillsTitle: "Keahlian",
     skillsDescription:
@@ -72,7 +72,7 @@ export const homeCopy: Record<Language, HomeCopy> = {
       "A final-year Informatics Engineering student at Institut Teknologi Sumatera. Experienced in project development and aspiring to become a software engineer.",
     aboutTitle: "About Arya Pratama",
     aboutDescription:
-      "An 8th-semester Informatics Engineering student at Institut Teknologi Sumatera with a GPA of 3.22/4.00. Completed a 3-month internship as a frontend web developer and successfully developed the Pejabat Pengelola Informasi dan Dokumentasi (PPID) website at ITERA using Next JS and Typescript. Has a portfolio of major coursework projects, including a hydroponic plant monitoring website with IoT integration. Known as a fast learner with strong adaptability, with the goal of developing fullstack development skills to contribute to larger-scale projects.",
+      "Fresh graduate in Informatics Engineering with hands-on experience in fullstack web development using PHP, Laravel, Vue.js, and MySQL. Experienced in developing REST APIs, authentication and authorization systems, responsive dashboards, content management systems, and document automation. Familiar with Laravel Sanctum, application security, Docker, AWS, and cloud deployment. Seeking opportunities as a Fullstack or Backend Developer with a focus on PHP and Laravel.",
     educationTitle: "Education",
     skillsTitle: "Skills",
     skillsDescription:
