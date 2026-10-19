@@ -2,7 +2,7 @@ import type { Education } from "./types";
 
 export const educations: Education[] = [
   {
-    period: "2022 - Present",
+    period: "2022 - 2026",
     institution: "Institut Teknologi Sumatera",
     major: "Informatics Engineering",
     description: {

@@ -117,7 +117,15 @@ function TechPill({ icon, label }: { icon: SkillIcon; label: string }) {
   );
 }
 
-function ProjectPreview({ image, title }: { image: string; title: string }) {
+function ProjectPreview({
+  image,
+  title,
+  eager = false,
+}: {
+  image: string;
+  title: string;
+  eager?: boolean;
+}) {
   return (
     <div className="relative h-56 overflow-hidden bg-[#e8edf2]">
       <Image
@@ -125,6 +133,7 @@ function ProjectPreview({ image, title }: { image: string; title: string }) {
         alt={`${title} preview`}
         fill
         sizes="(min-width: 768px) 33vw, 100vw"
+        loading={eager ? "eager" : "lazy"}
         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
       />
     </div>
@@ -224,7 +233,7 @@ export default function Home() {
               fill
               sizes="44px"
               className="object-contain"
-              priority
+              preload
             />
           </a>
 
@@ -431,7 +440,11 @@ export default function Home() {
                   { "--reveal-delay": `${index * 90}ms` } as React.CSSProperties
                 }
               >
-                <ProjectPreview image={project.image} title={project.title} />
+                <ProjectPreview
+                  image={project.image}
+                  title={project.title}
+                  eager={index === 0}
+                />
                 <div>
                   <div className="flex flex-col gap-3 p-6 md:p-7">
                     <p className="font-mono text-base font-bold text-black/35">

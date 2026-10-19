@@ -148,13 +148,6 @@ export const experienceCopy: Record<
         "Membantu mahasiswa memahami konsep basis data, query SQL, dan sistem manajemen basis data melalui sesi praktikum.",
     },
   },
-  "Assistant for the Capita Selecta Course": {
-    id: {
-      role: "Asisten Mata Kuliah Kapita Selekta",
-      detail:
-        "Membimbing mahasiswa dalam diskusi, tugas, dan penyelesaian masalah terkait topik pilihan informatika.",
-    },
-  },
   "Internship at Public Relations ITERA : Frontend Developer": {
     id: {
       role: "Magang di Humas ITERA: Frontend Developer",
@@ -162,18 +155,11 @@ export const experienceCopy: Record<
         "Berkontribusi dalam pengembangan website PPID dengan fokus pada frontend development dan peningkatan pengalaman pengguna.",
     },
   },
-  "Assistant for Introduction to Computers and Software 2": {
+  "Internship at PT. Indonesian Cloud: Fullstack Developer": {
     id: {
-      role: "Asisten Introduction to Computers and Software 2",
+      role: "Magang di PT. Indonesian Cloud: Fullstack Developer",
       detail:
-        "Menjadi asisten praktikum mata kuliah Introduction to Computers and Software dengan mengajarkan dasar bahasa pemrograman C++.",
-    },
-  },
-  "Assistant for Introduction to Computers and Software 1": {
-    id: {
-      role: "Asisten Introduction to Computers and Software 1",
-      detail:
-        "Menjadi asisten praktikum pada mata kuliah Introduction to Computers and Software 1 dengan mengajarkan keterampilan di bidang Ms. Office.",
+        "Menjalani magang sebagai Fullstack Developer di PT. Indonesian Cloud.",
     },
   },
 };

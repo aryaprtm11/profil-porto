@@ -262,7 +262,7 @@ export default async function ProjectDetailPage({
               fill
               sizes="44px"
               className="object-contain"
-              priority
+              preload
             />
           </Link>
           <span aria-hidden="true" className="hidden h-6 w-px bg-black/10 md:block" />
